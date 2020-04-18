@@ -1,0 +1,676 @@
+body {
+  background: #000000;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+p {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+#displayType {
+  top: 80px;
+  left: 90px;
+  width: 320px;
+  font-size: 1.5em;
+  position: absolute;
+  z-index: 0; 
+}
+
+#displayYear {
+  top: 50px;
+  left: 90px;
+  width: 320px;
+  font-size: 1.5em;
+  position: absolute;
+  z-index: 0; 
+}
+
+#imageHolder {
+  height: 920px;
+  margin-top: -100px;
+  
+}
+
+#mapImages {
+  width: 90%;
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#timeLineMain {
+  width: 85%;
+  position: absolute;
+  transition: opacity 0.5s;
+  z-index: -2;
+}
+
+#timeLineMain2 {
+  width: 85%;
+  position: absolute;
+  opacity: 1;
+  z-index: -3;
+}
+
+#menuItem1 {
+  top: 100px;
+  right: 20px;
+  width: 320px;
+  position: absolute;
+  z-index: -1;  
+}
+
+#menuItem2 {
+  top: 700px;
+  right: 20px;
+  width: 320px;
+  position: absolute;
+  z-index: -1;  
+}
+
+#riskKey {
+  bottom: 40px;
+  left: 90px;
+  
+  position: absolute;
+  z-index: -1;  
+}
+
+#reference {
+  bottom: 40px;
+  right: 40px;
+  width: 220px;
+  position: absolute;
+  z-index: -1;  
+}
+
+
+#yearIndicator {
+  bottom: 120px;
+  left: 640px;
+  width: 50px;
+  opacity: 0;
+  transition: left 0.5s;
+  position: absolute;
+  z-index: 1; 
+}
+
+#test1 {
+  top: 360px;
+  left: 440px;
+  width: 50px;
+  position: absolute;
+  z-index: 1; 
+}
+
+#test2 {
+  top: 520px;
+  left: 740px;
+  width: 50px;
+  position: absolute;
+  z-index: 1; 
+}
+
+#test3 {
+  top: 520px;
+  left: 840px;
+  width: 50px;
+  position: absolute;
+  z-index: 1; 
+}
+
+#yearDisplay {
+  bottom: 120px;
+  left: 660px;
+  width: 500px;
+  position: absolute;
+  z-index: -1; 
+}
+
+button {
+  background-color: rgba(138, 139, 140, 0.0);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition-duration: 0.4s;
+}
+
+.presentCat:hover {
+  background-color: rgba(138, 139, 140, 0.5);
+}
+
+.selected {
+  background-color: rgba(138, 139, 140, 0.5);
+}
+
+.selectedYear {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#titleDisplayType {
+  top: 50px;
+  right: 20px;
+  width: 320px;
+  text-align: center;
+  font-size: 1.2em;
+  position: absolute;
+  z-index: 0;  
+}
+
+#scarcityTypeMenu {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.5s;
+}
+
+#overall {
+  bottom: 210px;
+  left: 470px;
+  width: 130px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#agriculture {
+  bottom: 210px;
+  left: 640px;
+  width: 140px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#FoodAndBeverage {
+  bottom: 210px;
+  left: 820px;
+  width: 180px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#electric {
+  bottom: 210px;
+  left: 1040px;
+  width: 150px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#oil {
+  bottom: 210px;
+  left: 1220px;
+  width: 160px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#NoneAnymore {
+  bottom: 210px;
+  left: 1420px;
+  width: 140px;
+  position: absolute;
+  z-index: 0;  
+}
+
+#titleProjectionYear {
+  top: 650px;
+  right: 20px;
+  width: 320px;
+  text-align: center;
+  font-size: 1.2em;
+  position: absolute;
+  z-index: 0;  
+}
+
+#year2020 {
+  bottom: 70px;
+  left: 615px;
+  width: 120px;
+  padding-top: 60px;
+  position: absolute;
+  z-index: 5;  
+}
+
+#year2030 {
+  bottom: 70px;
+  left: 853px;
+  width: 120px;
+  padding-top: 60px;
+  position: absolute;
+  z-index: 5;  
+}
+
+#year2040 {
+  bottom: 70px;
+  left: 1080px;
+  width: 120px;
+  padding-top: 60px;
+  position: absolute;
+  z-index: 5;  
+}
+
+#descriptionHead {
+  top: 910px;
+  left: 20px;
+  width: 320px;
+  text-align: center;
+  font-size: 1em;
+  position: absolute;
+  z-index: 0;  
+}
+
+#description {
+  top: 950px;
+  left: 150px;
+  width: 1420px;
+  text-align: center;
+  font-size: 0.8em;
+  position: absolute;
+  z-index: 0;  
+}
+
+#agricultureAfrica {
+  top: 625px;
+  left: 740px;
+  width: 114px;
+  opacity: 0.0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+/* Standard width is 190 */
+
+#agricultureUS {
+  top: 505px;
+  left: 250px;
+  width: 122px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#agriculturePeru {
+  top: 665px;
+  left: 350px;
+  width: 122px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#agricultureIndia {
+  top: 605px;
+  left: 1100px;
+  width: 125px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#agricultureChina {
+  top: 405px;
+  left: 1400px;
+  width: 106px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#electricUS {
+  top: 505px;
+  left: 250px;
+  width: 122px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#electricAfrica {
+  top: 625px;
+  left: 750px;
+  width: 114px;
+  opacity: 0.0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#electricIndia {
+  top: 605px;
+  left: 1100px;
+  width: 119px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#electricChina {
+  top: 405px;
+  left: 1500px;
+  width: 126px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#oilAfrica {
+  top: 625px;
+  left: 750px;
+  width: 114px;
+  opacity: 0.0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#oilIndia {
+  top: 605px;
+  left: 1100px;
+  width: 124px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#oilChina {
+  top: 405px;
+  left: 1500px;
+  width: 126px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#industrialUS {
+  top: 505px;
+  left: 250px;
+  width: 140px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#industrialIndia {
+  top: 605px;
+  left: 1100px;
+  width: 124px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+#industrialChina {
+  top: 405px;
+  left: 1500px;
+  width: 126px;
+  opacity: 0;
+  position: absolute;
+  transition: width 1s, opacity 1s;
+  z-index: 1; 
+}
+
+svg {
+  top: 0px;
+  position: absolute;
+  z-index: -1;
+}
+
+#pulse0 {
+  top: 390px;
+  left: 850px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse1 {
+  top: 330px;
+  left: 440px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse2 {
+  top: 410px;
+  left: 1150px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse3 {
+  top: 320px;
+  left: 1310px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse4 {
+  top: 530px;
+  left: 540px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse5 {
+  top: 330px;
+  left: 440px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse6 {
+  top: 390px;
+  left: 850px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse7 {
+  top: 410px;
+  left: 1150px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse8 {
+  top: 320px;
+  left: 1310px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse9 {
+  top: 450px;
+  left: 850px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse10 {
+  top: 410px;
+  left: 1150px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse11 {
+  top: 270px;
+  left: 1300px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse12 {
+  top: 330px;
+  left: 440px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse13 {
+  top: 410px;
+  left: 1150px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#pulse14 {
+  top: 320px;
+  left: 1310px;
+  width: 50px;
+  display: none;
+  position: absolute;
+  z-index: 1; 
+}
+
+#testLine1 {
+    stroke-dasharray: 282.84271240234375;
+    stroke-dashoffset: 282.84271240234375;
+    animation: dash 5s linear forwards;
+}
+
+#agriUSLine {
+  stroke-dasharray: 244.13111877441406;
+  stroke-dashoffset: 244.13111877441406;
+  animation: dash 5s linear forwards;
+}
+
+#agriAfricaLine {
+  stroke-dasharray: 222.91029357910156;
+  stroke-dashoffset: 222.91029357910156;
+  animation: dash 5s linear forwards;
+}
+
+#agriIndiaLine {
+  stroke-dasharray: 173.07801818847656;
+  stroke-dashoffset: 173.07801818847656;
+  animation: dash 5s linear forwards;
+}
+
+#agriChinaLine {
+  stroke-dasharray: 86.02325439453125;
+  stroke-dashoffset: 86.02325439453125;
+  animation: dash 5s linear forwards;
+}
+
+#agriPeruLine {
+  stroke-dasharray: 223.60679626464844;
+  stroke-dashoffset: 223.60679626464844;
+  animation: dash 5s linear forwards;
+}
+
+#electricUSLine {
+  stroke-dasharray: 244.13111877441406;
+  stroke-dashoffset: 244.13111877441406;
+  animation: dash 5s linear forwards;
+}
+
+#electricAfricaLine {
+  stroke-dasharray: 222.91029357910156;
+  stroke-dashoffset: 222.91029357910156;
+  animation: dash 5s linear forwards;
+}
+
+#electricIndiaLine {
+  stroke-dasharray: 173.07801818847656;
+  stroke-dashoffset: 173.07801818847656;
+  animation: dash 5s linear forwards;
+}
+
+#electricChinaLine {
+  stroke-dasharray: 177.20045471191406;
+  stroke-dashoffset: 177.20045471191406;
+  animation: dash 5s linear forwards;
+}
+
+#oilAfricaLine {
+  stroke-dasharray: 180.80099487304688;
+  stroke-dashoffset: 180.80099487304688;
+  animation: dash 5s linear forwards;
+}
+
+#oilIndiaLine {
+  stroke-dasharray: 173.07801818847656;
+  stroke-dashoffset: 173.07801818847656;
+  animation: dash 5s linear forwards;
+}
+
+#oilChinaLine {
+  stroke-dasharray: 197.2308349609375;
+  stroke-dashoffset: 197.2308349609375;
+  animation: dash 5s linear forwards;
+}
+
+#industrialUSLine {
+  stroke-dasharray: 244.13111877441406;
+  stroke-dashoffset: 244.13111877441406;
+  animation: dash 5s linear forwards;
+}
+
+#industrialIndiaLine {
+  stroke-dasharray: 173.07801818847656;
+  stroke-dashoffset: 173.07801818847656;
+  animation: dash 5s linear forwards;
+}
+
+#industrialChinaLine {
+  stroke-dasharray: 177.20045471191406;
+  stroke-dashoffset: 177.20045471191406;
+  animation: dash 5s linear forwards;
+}
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">  
+</head>
+<body id="hi">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="script/main.js"></script>
+  <!-- <script src="script/rembrandt-v0.0.9/browser.min.js"></script>
+  <script type="module">
+    import Rembrandt from 'script/rembrandt-v0.0.9/browser.min.js';
+  </script> -->
+  
+  <!-- <h1 id="DataSelector">Overall</h1> -->
+  <div id="text">
+    <p id="heading"><span id="displayYear">Current water scarcity</span></p>
+    <h2><span id="displayType">Overall</span></h2>
+    
+    <div id="scarcityTypeMenu">
+      <button class="selected presentCat" id="overall">Overall</button>
+      <button class="presentCat" id="agriculture">Agriculture</button>
+      <button class="presentCat" id="FoodAndBeverage">Industrial</button>
+      <!-- <button class="presentCat" id="chemicals">Chemicals</button> -->
+      <button class="presentCat" id="electric">Electric Power</button>
+      <button class="presentCat" id="oil">Oil &amp; Gas</button>
+    </div>
+    
+    <div id="scarcityYearMenu">
+      <button class="selectedYear" id="year2020">Present</button>
+      <button id="year2030">2030</button>
+      <button id="year2040">2040</button>
+    </div>
+	
+	<!-- <p id="descriptionHead">Definition</p>
+    <p><span id="description">Overall water risk identifies areas with higher exposure to water-related risks and is an aggregated measure of all selected indicators from the Physical Quantity, Quality and Regulatory & Reputational Risk categories.</span></p> -->
+  </div>
+  
+  <div id="imageHolder">
+    <div id="mapImages">
+      <img id="timeLineMain" src="images/Current/overall.png" >
+      <img id="timeLineMain2" src="images/Current/overall.png" >
+    </div>
+    <img id="riskKey" src="images/Annotation.png" >
+    <img id="reference" src="images/reference.PNG" >
+    <img id="yearIndicator" src="images/selectedCircle.png" >
+    <img id="yearDisplay" src="images/YearDisplay.png" >
+    <img id="agricultureAfrica" src="images/textBubbles/agricultureAfrica.PNG">
+    <img id="agricultureUS" src="images/textBubbles/agricultureUS.png">
+    <img id="agricultureIndia" src="images/textBubbles/agricultureIndia.png">
+    <img id="agricultureChina" src="images/textBubbles/agricultureNorthChina.PNG">
+    <img id="agriculturePeru" src="images/textBubbles/agriculturePeru.png">
+    <img id="electricUS" src="images/textBubbles/electricUS.PNG">
+    <img id="electricAfrica" src="images/textBubbles/electricAfrica.png">
+    <img id="electricChina" src="images/textBubbles/electricChina.png">
+    <img id="electricIndia" src="images/textBubbles/electricIndia.png">
+    <img id="oilAfrica" src="images/textBubbles/oilAfrica.png">
+    <img id="oilChina" src="images/textBubbles/oilChina.png">
+    <img id="oilIndia" src="images/textBubbles/oilIndia.png">
+    <img id="industrialUS" src="images/textBubbles/industrialUS.png">
+    <img id="industrialChina" src="images/textBubbles/industrialChina.png">
+    <img id="industrialIndia" src="images/textBubbles/industrialIndia.png">
+    
+    <img id="pulse0" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse1" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse2" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse3" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse4" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse5" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse6" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse7" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse8" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse9" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse10" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse11" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse12" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse13" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+    <img id="pulse14" src="images/PulseImg/ShapeLayerComp1_00000.png" >
+  </div>
+  
+  <svg height="1000" width="1700">
+    <line id="agriAfricaLine" x2="755" y2="620" x1="863" y1="425" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="agriUSLine" x2="250" y2="500" x1="450" y1="360" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="agriIndiaLine" x1="1166" y1="440" x2="1100" y2="600" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="agriChinaLine" x1="1330" y1="350" x2="1400" y2="400" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="agriPeruLine" x1="550" y1="560" x2="350" y2="660" style="stroke:rgb(255,255,255); stroke-width:2" />
+    
+    <line id="electricAfricaLine" x2="755" y2="620" x1="863" y1="425" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="electricUSLine" x2="250" y2="500" x1="450" y1="360" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="electricIndiaLine" x1="1166" y1="440" x2="1100" y2="600" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="electricChinaLine" x1="1330" y1="350" x2="1500" y2="400" style="stroke:rgb(255,255,255); stroke-width:2" />
+    
+    <line id="oilAfricaLine" x2="755" y2="620" x1="863" y1="478" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="oilIndiaLine" x1="1166" y1="440" x2="1100" y2="600" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="oilChinaLine" x1="1330" y1="300" x2="1500" y2="400" style="stroke:rgb(255,255,255); stroke-width:2" />
+    
+    <line id="industrialUSLine" x2="250" y2="500" x1="450" y1="360" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="industrialIndiaLine" x1="1166" y1="440" x2="1100" y2="600" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line id="industrialChinaLine" x1="1330" y1="350" x2="1500" y2="400" style="stroke:rgb(255,255,255); stroke-width:2" />
+    
+    <!-- <line id="ActualTest" x1="867" y1="425" x2="800" y2="620" style="stroke:rgb(255,255,255); stroke-width:2" /> -->
+    <circle id="yearSvgCircle" cx="675" cy="934" r="19" stroke="black" stroke-width="0" fill="white" />
+    <!--
+    <line x1="50" y1="0" x2="50" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="100" y1="0" x2="100" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="150" y1="0" x2="150" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="200" y1="0" x2="200" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="250" y1="0" x2="250" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="300" y1="0" x2="300" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="350" y1="0" x2="350" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="400" y1="0" x2="400" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="450" y1="0" x2="450" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="500" y1="0" x2="500" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="550" y1="0" x2="550" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="600" y1="0" x2="600" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="650" y1="0" x2="650" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="700" y1="0" x2="700" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="750" y1="0" x2="750" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="800" y1="0" x2="800" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="850" y1="0" x2="850" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="900" y1="0" x2="900" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="950" y1="0" x2="950" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    
+    <line x1="1050" y1="0" x2="1050" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1100" y1="0" x2="1100" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1150" y1="0" x2="1150" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1200" y1="0" x2="1200" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1250" y1="0" x2="1250" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1300" y1="0" x2="1300" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1350" y1="0" x2="1350" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1400" y1="0" x2="1400" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1450" y1="0" x2="1450" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1500" y1="0" x2="1500" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1550" y1="0" x2="1550" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1600" y1="0" x2="1600" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1650" y1="0" x2="1650" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="1700" y1="0" x2="1700" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="1750" y1="0" x2="1750" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="800" y1="0" x2="800" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="850" y1="0" x2="850" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line x1="900" y1="0" x2="900" y2="900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line x1="950" y1="0" x2="950" y2="900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    
+    <line y1="50" x1="0" y2="50" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="100" x1="0" y2="100" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="150" x1="0" y2="150" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="200" x1="0" y2="200" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="250" x1="0" y2="250" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="300" x1="0" y2="300" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="350" x1="0" y2="350" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="400" x1="0" y2="400" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="450" x1="0" y2="450" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="500" x1="0" y2="500" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="550" x1="0" y2="550" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="600" x1="0" y2="600" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="650" x1="0" y2="650" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="700" x1="0" y2="700" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="750" x1="0" y2="750" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="800" x1="0" y2="800" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="850" x1="0" y2="850" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    <line y1="900" x1="0" y2="900" x2="1900" style="stroke:rgb(255,255,255); stroke-width:2" />
+    <line y1="950" x1="0" y2="950" x2="1900" style="stroke:rgb(22, 66, 140); stroke-width:2" />
+    -->
+  </svg> 
+</body>
+</html>

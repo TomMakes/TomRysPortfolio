@@ -1,0 +1,271 @@
+#dangerPageStickerPageBreak {
+  overflow: hidden;
+  height: 90px;
+  background-image: url("../media/websiteMedia/dangersStickerTraderBreak.png");
+  background-repeat: repeat-x;
+}
+
+#projectStickerTrader {
+  padding-top:  10px;
+  padding-bottom:  10px;
+  height: 100%;
+  background-color: #a9bcd0;
+}
+
+#StickerTitle {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 54px;
+}
+
+#StickerSlideShow {
+  display: flex;  
+  justify-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+}
+
+#STA1 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: #a9bcd0;
+  transition: background 0.5s;
+  height: 805px;
+  z-index: 1;
+}
+
+#STA1:hover {
+  background: grey;
+}
+
+#STA2 {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #a9bcd0;
+  transition: background 0.5s;
+  height: 805px;
+  z-index: 1;
+}
+
+#STA2:hover {
+  background: grey;
+}
+
+.STAB {
+  width: 50px;
+  background: #a9bcd0;
+  transition: background 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 805px; 
+  z-index: 1;
+}
+
+#STprojBodyDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+#STprojBody {
+  line-height: 1.5em;
+  background: #E8E8E8;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+#STslidesDiv {
+  height: 750px;
+  width: 1100px;
+  position: relative;
+  overflow: hidden;
+}
+
+#STslides {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: -1100px;  
+  transition: left 0.5s ease-out;
+  height: 750px;
+  overflow-y: hidden;
+  z-index: 0;
+}
+
+#STmobileArrows {
+  display: none;
+}
+
+.STspace {
+  background: #a9bcd0;
+  flex-grow: 1;
+  z-index: 4;
+}
+
+#STthumbnails {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+}
+
+.STthumbnail {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid #a9bcd0;
+}
+
+.STthumbnailSelected {
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 380px) {
+  #StickerTitle {
+    font-size: 45px;
+  }
+  
+  #StickerSlideShow {
+    height: 300px;
+  }
+  
+  #STA1 {
+    height: 305px;
+    display: none;
+  }
+  
+  .STAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #STslidesDiv {
+    height: 300px;
+    width: 320px;
+    position: relative;
+  }
+  
+  #STslides {
+    height: 218px;
+  }
+  
+  #STmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #STmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #STmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #STA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .STthumbnail {   
+    height: 40px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+}
+
+@media only screen and (min-width: 381px) and (max-width: 440px) {
+  #StickerTitle {
+    font-size: 40px;
+  }
+  
+  #StickerSlideShow {
+    height: 365px;
+  }
+  
+  #STA1 {
+    height: 305px;
+    display: none;
+  }
+  
+  .STAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #STslidesDiv {
+    height: 300px;
+    width: 400px;
+    position: relative;
+  }
+  
+  #STslides {
+    height: 283px;
+  }
+  
+  #STmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #STmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #STmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #STA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .STthumbnail {   
+    height: 40px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+}
+
+@media only screen and (min-width: 441px) and (max-width: 1100px) {
+  
+  #StickerSlideShow {
+    height: 570px;
+  }
+  
+  #STA1 {
+    height: 570px;
+  }
+  
+  .STAB {
+    width: 25px;
+    height: 570px; 
+    z-index: 1;
+  }
+  
+  #STslidesDiv {
+    height: 511px;
+    width: 750px;
+    position: relative;
+  }
+  
+  #STslides {
+    height: 511px;
+  }
+  
+  #STA2 {
+    height: 511px;
+  }
+}

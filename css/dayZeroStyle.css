@@ -1,0 +1,305 @@
+#mainPageDayZeroPageBreak {
+  overflow: hidden;
+  height: 90px;
+  background-image: url("../media/websiteMedia/introPageDayZeroBreak.png");
+  background-repeat: repeat-x;
+}
+
+#projectDayZero {
+  padding-top:  10px;
+  padding-bottom:  10px;
+  height: 100%;
+  background-color: #000000;
+}
+
+#projectDayZero a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.25em;
+}
+
+#DZTitle {
+  color: #b9b9b9;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 54px;
+}
+
+#DayZeroSlideShow {
+  display: flex;  
+  justify-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+}
+
+#DZA1 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: #000000;
+  transition: background 1s;
+  height: 805px;
+  z-index: 1;
+}
+
+#DZA1:hover {
+  background: grey;
+}
+
+#DZA2 {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #000000;
+  transition: background 1s;
+  height: 805px;
+  z-index: 1;
+}
+
+#DZA2:hover {
+  background: grey;
+}
+
+.DZAB {
+  width: 50px;
+  background: #000000;
+  transition: background 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 805px; 
+  z-index: 1;
+}
+
+#DZprojBodyDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#DZprojLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+#DZprojBody {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: #E3E3E3;
+}
+
+#DZprojBody a {
+  color: white;
+}
+
+#DZslidesDiv {
+  height: 750px;
+  width: 1100px;
+  position: relative;
+  overflow: hidden;
+}
+
+#DZslides {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: -1100px;  
+  transition: left 0.5s ease-out;
+  height: 750px;
+  overflow-y: hidden;
+  z-index: 0;
+}
+
+#DZmobileArrows {
+  display: none;
+}
+
+.DZspace {
+  background: #000000;
+  flex-grow: 1;
+  z-index: 4;
+}
+
+#DZthumbnails {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  z-index: 5;
+}
+
+.DZthumbnail {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid #000000;
+}
+
+.DZthumbnailSelected {
+  border: 2px solid grey;
+}
+
+@media only screen and (max-width: 380px) {
+  #DZTitle {
+    font-size: 45px;
+  }
+  
+  #DayZeroSlideShow {
+    height: 300px;
+  }
+  
+  #DZA1 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DZAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #DZslidesDiv {
+    height: 218px;
+    width: 320px;
+    position: relative;
+  }
+  
+  #DZslides {
+    height: 218px;
+  }
+  
+  #DZmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #DZmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #DZmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #DZA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DZthumbnail {
+    height: 25px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+
+}
+
+@media only screen and (min-width: 381px) and (max-width: 440px) {
+  #DZTitle {
+    font-size: 45px;
+  }
+  
+  #DayZeroSlideShow {
+    height: 365px;
+  }
+  
+  #DZA1 {
+    height: 365px;
+    display: none;
+  }
+  
+  .DZAB {
+    width: 25px;
+    height: 365px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #DZslidesDiv {
+    height: 283px;
+    width: 400px;
+    position: relative;
+  }
+  
+  #DZslides {
+    height: 283px;
+  }
+  
+  #DZmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #DZmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #DZmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #DZA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DZthumbnail {
+    height: 25px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+
+}
+
+@media only screen and (min-width: 441px) and (max-width: 1100px) {
+  
+  #DayZeroSlideShow {
+    height: 570px;
+  }
+  
+  #DZA1 {
+    height: 570px;
+  }
+  
+  .DZAB {
+    width: 25px;
+    height: 570px; 
+    z-index: 1;
+  }
+  
+  #DZslidesDiv {
+    height: 511px;
+    width: 750px;
+    position: relative;
+  }
+  
+  #DZslides {
+    height: 511px;
+  }
+  
+  #DZmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: none;
+  }
+  
+  #DZmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #DZmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #DZA2 {
+    height: 511px;
+  }
+}

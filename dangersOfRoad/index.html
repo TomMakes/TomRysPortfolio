@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <title>Data Exercise</title>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <main>
+      
+      <h2 id="mainPageHeading">Dangers of the Road</h2>
+      <div id="barChartDiv"> 
+        <p id="barChartInfo"> Percentage Of Drivers Involved In Fatal Collisions Who Were 
+          <select id="barCatSelect">
+            <option value="PercentSpeeding">Speeding</option>
+            <option value="PercentAlcoholImpaired">Impaired by Alcohol</option>
+            <option value="PercentNewAccidents">In an Accident for the First Time</option>
+            <option value="PercentNotDistracted">Not Distracted</option>
+          </select>
+        </p>
+        
+        <button id="backToMap"> Back </button>
+      </div>
+      
+      <div > <p class="step1" id="story1Intro">Here we have a stacked bar chart giving an overview of what percentage of fatal collisions have occured due to speeding. </p>
+             <p class="step1"  id="story1Intro2">As you can see, Ohio has a relatively low percentage of collisions due to speeding. </p>
+             <p class="step1.5"  id="story1Intro3">It is higher than Nebraska </p>
+             <p class="step1.5"  id="story1Intro4">But much less than Hawaii </p>
+        
+        <p class="step1.5"  id="story1SelectMe">Click below to see other statistics</p>
+        
+        <p class="step1"  id="story1Speeding">Speeding</p>
+        <p class="step1"  id="story1OtherCauses">Other Causes</p>
+        <p class="step1"  id="story1Lowest">Lowest Percentage <br> State</p>
+        <p class="step1"  id="story1Highest">Highest Percentage <br> State</p>
+        
+        <p class="step2.1"  id="step2NotDistracted">- Click here</p>
+        
+        <p class="step2" id="story2Intro"> This particular chart displays the percent of collisions that have happened by people who were not distracted.</p>
+        <p class="step2" id="story2Intro2"> In this case, the higher percent is better.</p>
+        <p class="step2" id="story2Intro3"> Ohio does well with 99%, let's see a state that is not doing so well now. </p>
+        
+        <p class="step2.1"  id="step2Back">Click ^</p>
+        
+        <p class="step3" id="story3Intro"> Now lets take a look at a bad state like Texas. ^</p>
+        <p class="step3" id="story3Intro2"> Each state you visit will be highlighted so you know which ones you've visited.</p>
+        
+        <p class="step4" id="story4Intro"> Texas has both a high rate of speeding drivers, as well as a high rate of alcohol use. </p>
+        <p class="step4" id="story4Intro2"> While the level of distracted drivers is low, it doesn't make up for the other reckless behaviors. </p>
+        <p class="step4" id="story4Intro3"> There are no clear winners for the worst state, but this analysis highlights <br> states that are clearly 
+          more reckless than others, and there are some that <br> are very safe like Minnesota.</p>
+        <p class="step4" id="story4Intro4"> Looking by geographical region, there is no clearly dangerous or safe area. <br>
+        Although the south seems to have a high amount of incidents.</p>
+        
+        <p class="step4" id="story4Exit"> Press the back button to <br> explore the map on your own! </p>
+      </div>
+      
+    <svg id='choropleth'></svg>
+      
+    <svg id='barChart'></svg>
+    
+    <div id="Info" class="hidden">
+      <p> <span id="title">Brazil</span></p>
+      <p> <span id="value">0.0</span></p>
+    </div>
+
+    <div id="pointDifference" class="hidden">
+      <p> <span id="pointDiff">0.0</span></p>
+    </div>
+    </main>
+    <!-- add your HTML here -->
+    <script src='./main.js'></script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+#mainPageDangersOfPageBreak {
+  overflow: hidden;
+  height: 90px;
+  background-image: url("../media/websiteMedia/dayZeroDangersBreak.png");
+  background-repeat: repeat-x;
+}
+
+#projectDangersOfRoad {
+  padding-top:  10px;
+  padding-bottom:  10px;
+  height: 100%;
+  background-color: white;
+}
+
+#DangersTitle {
+  margin-top: 20px;
+  font-size: 54px;
+}
+
+#DangersSlideShow {
+  display: flex;  
+  justify-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+}
+
+#DORA1 {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: #FFFFFF;
+  transition: background 1s;
+  height: 800px;
+  z-index: 1;
+}
+
+#DORA1:hover {
+  background: grey;
+}
+
+#DORA2 {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #FFFFFF;
+  transition: background 1s;
+  height: 800px;
+  z-index: 1;
+}
+
+#DORA2:hover {
+  background: grey;
+}
+
+#DORprojBodyDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+#DORprojBody {
+  line-height: 1.5em;
+  background: #E8E8E8;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+#DORslidesDiv {
+  height: 750px;
+  width: 1100px;
+  position: relative;
+  overflow: hidden;
+}
+
+#DORslides {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: -1100px;  
+  transition: left 0.5s ease-out;
+  height: 750px;
+  overflow-y: hidden;
+  z-index: 0;
+}
+
+#DORmobileArrows {
+  position: absolute;
+  display: none;
+}
+
+.DORspace {
+  background: #FFFFFF;
+  flex-grow: 1;
+  z-index: 4;
+}
+
+#DORthumbnails {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+}
+
+.DORthumbnail {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid white;
+}
+
+.DORthumbnailSelected {
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 380px) {
+  #DangersTitle {
+    font-size: 40px;
+  }
+  
+  #DangersSlideShow {
+    height: 300px;
+  }
+  
+  #DORA1 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DORAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #DORslidesDiv {
+    height: 300px;
+    width: 320px;
+    position: relative;
+  }
+  
+  #DORslides {
+    height: 218px;
+  }
+  
+  #DORmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #DORmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #DORmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #DORA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DORthumbnail {   
+    height: 30px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+}
+
+@media only screen and (min-width: 381px) and (max-width: 440px) {
+  #DangersTitle {
+    font-size: 40px;
+  }
+  
+  #DangersSlideShow {
+    height: 365px;
+  }
+  
+  #DORA1 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DORAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #DORslidesDiv {
+    height: 300px;
+    width: 400px;
+    position: relative;
+  }
+  
+  #DORslides {
+    height: 283px;
+  }
+  
+  #DORmobileArrows {
+    position: absolute;
+    bottom: 40px;
+    display: block;
+  }
+  
+  #DORmobileArrowLeft {
+    margin-right: 30px;
+  }
+  
+  #DORmobileArrowRight {
+    margin-left: 30px;
+  }
+  
+  #DORA2 {
+    height: 305px;
+    display: none;
+  }
+  
+  .DORthumbnail {   
+    height: 30px;
+    margin-left: 0px;
+    margin-right: 10px;
+    z-index: 5;
+  }
+}
+
+@media only screen and (min-width: 441px) and (max-width: 1100px) {
+  
+  #DangersSlideShow {
+    height: 560px;
+  }
+  
+  #DORA1 {
+    height: 560px;
+  }
+  
+  .DORAB {
+    width: 25px;
+    height: 560px; 
+    z-index: 1;
+  }
+  
+  #DORslidesDiv {
+    height: 511px;
+    width: 750px;
+    position: relative;
+  }
+  
+  #DORslides {
+    height: 511px;
+  }
+  
+  #DORA2 {
+    height: 511px;
+  }
+}

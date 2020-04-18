@@ -1,0 +1,265 @@
+/* MAIN CSS FILE FOR PROJECT */
+
+main {
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+  line-height: 1.5em;
+}
+
+svg {
+  display:block;
+  margin: auto;
+}
+
+#mainPageHeading {
+  margin-left: 50px;
+}
+
+#barChartDiv {
+  margin-left: 80px;
+}
+
+#choropleth {
+  transition-property: opacity;
+  transition-duration: 1s;
+  opacity: 1;
+  position: fixed;
+  left:200px;
+  top:100px;
+}
+
+#barChart {
+  transition-property: opacity;
+  transition-duration: 1s;
+  opacity: 1;
+  position: fixed;
+  left:480px;
+  top:20%;
+  z-index:-1;
+}
+
+#Info {
+  position: absolute;
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  padding-bottom: 5px;
+  padding-top: 1px;
+  border: 1px solid;
+}
+
+.step0 {
+  opacity: 1;
+}
+
+.step1 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+}
+
+#story1Intro {
+  position: fixed;
+  left:400px;
+  top:120px;
+}
+
+#story1Intro2 {
+  position: fixed;
+  left:400px;
+  top:150px;
+}
+
+#story1Intro3 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:250px;
+  top:350px;
+}
+
+#story1Intro4 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:1070px;
+  top:450px;
+}
+
+#story1Speeding {
+  position: fixed;
+  left:760px;
+  top:550px;
+}
+
+#story1OtherCauses {
+  position: fixed;
+  left:745px;
+  top:350px;
+}
+
+#story1Lowest {
+  position: fixed;
+  left:543px;
+  top:690px;
+  text-align: center;
+}
+
+#story1Highest {
+  position: fixed;
+  left:888px;
+  top:690px;
+  text-align: center;
+}
+
+#story1SelectMe {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:570px;
+  top:25px;
+  text-align: center;
+}
+
+#step2NotDistracted {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:810px;
+  top:125px;
+  text-align: center;
+}
+
+#story2Intro {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:200px;
+  top:120px;
+  text-align: center;
+}
+
+#story2Intro2 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:250px;
+  top:160px;
+  text-align: center;
+}
+
+#story2Intro3 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:488px;
+  top:690px;
+  text-align: center;
+}
+
+#step2Back {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:60px;
+  top:130px;
+}
+
+#story3Intro {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:400px;
+  top:810px;
+  text-align: center;
+}
+
+#story3Intro2 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:520px;
+  top:260px;
+  text-align: center;
+}
+
+#story4Intro {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:400px;
+  top:120px;
+  text-align: center;
+}
+
+#story4Intro2 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:450px;
+  top:160px;
+  text-align: center;
+}
+
+#story4Intro3 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:1090px;
+  top:360px;
+}
+
+#story4Intro4 {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:1090px;
+  top:500px;
+}
+
+#story4Exit {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+  position: fixed;
+  left:40px;
+  top:150px;
+  text-align: center;
+}
+
+.node {
+  fill: gray;
+}
+
+.link {
+  stroke: black;
+  stroke-width: 1px;
+} 
+
+.selected {
+    stroke: white;
+    stroke-width: 2;
+}
+
+.hidden {
+    visibility: hidden;
+} 
+
+.dissapear {
+  display: none;
+}
