@@ -100,7 +100,7 @@ function setupHoverEventTriggers() {
 	// setup the navigation link hovers
 	for(let i = 1; i <= 4; ++i) {
 		$("#navLink" + i).mouseover(function() {
-			document.getElementById('navLinkUnderline' + i).style.transform = "scale(0.7,0.1)";
+			document.getElementById('navLinkUnderline' + i).style.transform = "scale(1,0.1)";
 		});
 		$("#navLink" + i).mouseleave(function() {
 			document.getElementById('navLinkUnderline' + i).style.transform = "scale(0,0)";
