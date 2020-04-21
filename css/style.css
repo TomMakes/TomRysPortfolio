@@ -88,6 +88,10 @@ header {
 	transform: scale(0,0);
 }
 
+.hidden {
+	display: none;
+}
+
 
 #mainPage {
   flex-direction: column;

@@ -8,3 +8,21 @@ function idMe(name) {
 function log(ev) {
  console.log(ev);
 }
+
+function typeWriterEffect( id, contents, i) {
+  if(i === undefined) {
+     i = 0;
+  }
+
+  if($("#"+id).html() === contents) {
+    return;
+  }
+  if(i == 0) {
+      $("#"+id).html("");
+  }
+  if (i < contents.length) {
+    document.getElementById(id).innerHTML += contents.charAt(i);
+    i++;
+    setTimeout(function(){typeWriterEffect(id,contents, i)}, 25);
+  }
+}
