@@ -7,11 +7,13 @@ var movingSlide;
 var isAtTopOfPage = true;
 // array of navigation menu links.
 var navLinks;
+// object holding current slide positions on each slideshow
+var slidePosition;
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
 $(window).resize(function(){
- windowWidth = $(window).width();
- windowHeight = $(window).height();
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
   
   $("#mainPage").css( "height", windowHeight );
   
@@ -29,41 +31,7 @@ $(window).resize(function(){
 
 
 window.onload = function() {
-  windowWidth = $(window).width();
-  windowHeight = $(window).height();
-  navLinks = document.getElementById("heading").	
-						getElementsByClassName("link");
-  movingSlide = false;
-
-  
-  $("#mainPage").css( "height", windowHeight );
-  
-  // Set the spacing on the main page, 
-  // depends on if my full name can fit on one line or not
-  if(windowWidth < 450) {
-    $("#name").css( "top", ( windowHeight/2 -127 ) );
-    $("#portfolioWord").css( "top", ( windowHeight/2 - 17 ));
-  }
-  else {
-    $("#name").css( "top", ( windowHeight/2 -67 ) );
-    $("#portfolioWord").css( "top", ( windowHeight/2 - 17 ));
-  }
-  
-  // Find where the user is on the page to determine font size
-  if ($(window).scrollTop() == 0) {
-	isAtTopOfPage = true; 
-	for(let i = 0; i < navLinks.length; i++){
-		navLinks[i].style.fontSize = '1.7em';
-	}
-  } 
-  else {
-	if(!isAtTopOfPage) return;
-	for(let i = 0; i < navLinks.length; i++){
-		navLinks[i].style.fontSize = '1em';
-		isAtTopOfPage = false;
-	}
-  }
-  
+  setupMainPageAndNav();
   setupHoverEventTriggers();
 
   // DOR = Dangers of Road
@@ -95,6 +63,41 @@ $(window).scroll(function() {
   }
 });
 
+function setupMainPageAndNav() {
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
+  navLinks = document.getElementById("heading").	
+						getElementsByClassName("link");
+						
+  $("#mainPage").css( "height", windowHeight );
+  
+  // Set the spacing on the main page, 
+  // depends on if my full name can fit on one line or not
+  if(windowWidth < 450) {
+    $("#name").css( "top", ( windowHeight/2 -127 ) );
+    $("#portfolioWord").css( "top", ( windowHeight/2 - 17 ));
+  }
+  else {
+    $("#name").css( "top", ( windowHeight/2 -67 ) );
+    $("#portfolioWord").css( "top", ( windowHeight/2 - 17 ));
+  }
+  
+  // Find where the user is on the page to determine font size
+  if ($(window).scrollTop() == 0) {
+	isAtTopOfPage = true; 
+	for(let i = 0; i < navLinks.length; i++){
+		navLinks[i].style.fontSize = '1.7em';
+	}
+  } 
+  else {
+	if(!isAtTopOfPage) return;
+	for(let i = 0; i < navLinks.length; i++){
+		navLinks[i].style.fontSize = '1em';
+		isAtTopOfPage = false;
+	}
+  }
+}
+
 
 function setupHoverEventTriggers() {
 	// setup the navigation link hovers
@@ -122,6 +125,7 @@ function setupHoverEventTriggers() {
 // on a slideshow
 function setupProjectSlideShowButtons(projects, numOfSlides) {
   let slideWidth = 1100;
+  movingSlide = false;
   
   if(windowWidth <= 380) {
     slideWidth = 320;
