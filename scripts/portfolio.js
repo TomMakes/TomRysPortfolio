@@ -198,6 +198,7 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   // If slides want to go left, run this, otherwise go right
   if(direction == 0 || direction == "left" || direction == "Left") {
     $(idMe(slide)).css("left", (left + slideWidth));
+    // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to 6, otherwise keep the value.
     slideShowPosition[project+"slidePosition"] = 
     ((--slideShowPosition[project+"slidePosition"]) < 0) ? 6 : slideShowPosition[project+"slidePosition"];
   } else {
@@ -206,6 +207,12 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
     ((++slideShowPosition[project+"slidePosition"]) > 6) ? 0 : slideShowPosition[project+"slidePosition"];
   }
   
+  // Changes the text under image
+  // Currently only works for Day Zero
+  if(project = "DZ") {
+    changeProjectText(project, slideShowPosition[project+"slidePosition"]);  
+  }
+    
   setTimeout(function(){
     if(parseInt($(idMe(slide)).css("left").split("p")[0]) >= boundryLeft){
       // Remove transition temporarily so user doesn't notice slide switching
@@ -225,6 +232,17 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
     } 
   }, 480);
   
+}
+
+function changeProjectText(project, slideNum) {
+  if(project = "DZ") {
+    // hook onto the element that needs to be changed
+    // DZprojBody
+    // get the desired text to be displayed
+    // DZmessage + i
+    // send to typerwritter effect function
+    typeWriterEffect("DZprojBody", document.getElementById("DZmessage" + slideNum).innerHTML);
+  }
 }
 
 // This function moves the border around the thumbnails for the slideshow
