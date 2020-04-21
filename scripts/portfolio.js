@@ -8,7 +8,7 @@ var isAtTopOfPage = true;
 // array of navigation menu links.
 var navLinks;
 // object holding current slide positions on each slideshow
-var slidePosition;
+var slideShowPosition;
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
 $(window).resize(function(){
@@ -98,7 +98,6 @@ function setupMainPageAndNav() {
   }
 }
 
-
 function setupHoverEventTriggers() {
 	// setup the navigation link hovers
 	for(let i = 1; i <= 4; ++i) {
@@ -126,6 +125,7 @@ function setupHoverEventTriggers() {
 function setupProjectSlideShowButtons(projects, numOfSlides) {
   let slideWidth = 1100;
   movingSlide = false;
+  slideShowPosition = {};
   
   if(windowWidth <= 380) {
     slideWidth = 320;
@@ -136,13 +136,16 @@ function setupProjectSlideShowButtons(projects, numOfSlides) {
   } 
   
   function thumbnailSlideSetup(project, direction, slides) {
-    moveThumbnail(project +"thumbnail", direction);
-    moveSlides(project +"slides", direction, slides, slideWidth);
+    moveThumbnail(project, direction);
+    moveSlides(project, direction, slides, slideWidth);
   }
   
   for(let i = 0; i < projects.length; i++) {
     // Put the slideshow in correct position
     $("#"+ projects[i] +"slides").css("left", (-1*slideWidth) + "px");
+    
+    // Create object properties to hold which slide is currently being displayed
+    slideShowPosition[projects[i]+"slidePosition"] = 0;
     
     // Set up event listeners for swipe events
     let md = new Hammer(document
@@ -171,7 +174,7 @@ function setupProjectSlideShowButtons(projects, numOfSlides) {
 // numOfSlides: amount of slides within the slideshow
 // slideWidth: how wide is each image
 
-function moveSlides(slide, direction, numOfSlides, slideWidth) {
+function moveSlides(project, direction, numOfSlides, slideWidth) {
   // Check if the slide isn't currently moving
   if(movingSlide) return;
   // Set moving to true while completing this function
@@ -181,6 +184,7 @@ function moveSlides(slide, direction, numOfSlides, slideWidth) {
     movingSlide = false;
   }, 500);
   
+  let slide = project +"slides";
   let left =  parseInt($(idMe(slide)).css("left").split("p")[0]);
   
   // These four vairables are for determining the end points of the slide show
@@ -194,8 +198,12 @@ function moveSlides(slide, direction, numOfSlides, slideWidth) {
   // If slides want to go left, run this, otherwise go right
   if(direction == 0 || direction == "left" || direction == "Left") {
     $(idMe(slide)).css("left", (left + slideWidth));
+    slideShowPosition[project+"slidePosition"] = 
+    ((--slideShowPosition[project+"slidePosition"]) < 0) ? 6 : slideShowPosition[project+"slidePosition"];
   } else {
     $(idMe(slide)).css("left", (left - slideWidth));
+    slideShowPosition[project+"slidePosition"] = 
+    ((++slideShowPosition[project+"slidePosition"]) > 6) ? 0 : slideShowPosition[project+"slidePosition"];
   }
   
   setTimeout(function(){
@@ -228,12 +236,12 @@ function moveThumbnail(group, direction) {
   if(movingSlide) return;
   
   // get array of thumbnail images
-  let thumbnails = document.getElementsByClassName(group);
+  let thumbnails = document.getElementsByClassName(group +"thumbnail");
   let currentlyHighlighted = 0;
   
   // find which thumbnail is currently highlighted
   for(let i = 0; i < thumbnails.length; i++) {
-    if( $(thumbnails[i]).hasClass(group + "Selected")){
+    if( $(thumbnails[i]).hasClass(group + "thumbnailSelected")){
       currentlyHighlighted = i;
       break;
     }
@@ -241,16 +249,16 @@ function moveThumbnail(group, direction) {
   
   // Determine if moving left or right
   if(direction == 0 || direction == "left" || direction == "Left") {
-    thumbnails[currentlyHighlighted].classList.remove(group + "Selected");
+    thumbnails[currentlyHighlighted].classList.remove(group + "thumbnailSelected");
     if(currentlyHighlighted == 0) 
       currentlyHighlighted = thumbnails.length;
-    thumbnails[currentlyHighlighted-1].classList.add(group + "Selected");
+    thumbnails[currentlyHighlighted-1].classList.add(group + "thumbnailSelected");
   } else {
     //console.log(currentlyHighlighted);
-    thumbnails[currentlyHighlighted].classList.remove(group + "Selected");
+    thumbnails[currentlyHighlighted].classList.remove(group + "thumbnailSelected");
     if(currentlyHighlighted == (thumbnails.length-1))
       currentlyHighlighted = -1; 
-    thumbnails[currentlyHighlighted+1].classList.add(group + "Selected");
+    thumbnails[currentlyHighlighted+1].classList.add(group + "thumbnailSelected");
     //console.log(thumbnails.length);
   }
 }
