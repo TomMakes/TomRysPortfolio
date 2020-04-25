@@ -236,11 +236,6 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
 
 function changeProjectText(project, slideNum) {
   if(project = "DZ") {
-    // hook onto the element that needs to be changed
-    // DZprojBody
-    // get the desired text to be displayed
-    // DZmessage + i
-    // send to typerwritter effect function
     typeWriterEffect("DZprojBody", document.getElementById("DZmessage" + slideNum).innerHTML);
   }
 }
