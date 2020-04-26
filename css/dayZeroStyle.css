@@ -175,17 +175,19 @@
   }
   
   #DZmobileArrows {
+    width: 90%;
     position: absolute;
     bottom: 40px;
-    display: block;
+    display: flex;
+    justify-content: center;
   }
   
   #DZmobileArrowLeft {
-    margin-right: 30px;
+    width: 40%;
   }
   
   #DZmobileArrowRight {
-    margin-left: 30px;
+    width: 40%;
   }
   
   #DZA2 {
@@ -198,6 +200,10 @@
     margin-left: 0px;
     margin-right: 10px;
     z-index: 5;
+  }
+  
+  #DZprojLinkA {
+    display: none;
   }
 
 }
