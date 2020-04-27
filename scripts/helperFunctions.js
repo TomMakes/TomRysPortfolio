@@ -10,6 +10,8 @@ function log(ev) {
 }
 
 function typeWriterEffect( id, contents, i) {
+  // Determine a way to tell the function to stop it's loop of writing the characters.
+  
   if(i === undefined) {
      i = 0;
   }
@@ -23,6 +25,6 @@ function typeWriterEffect( id, contents, i) {
   if (i < contents.length) {
     document.getElementById(id).innerHTML += contents.charAt(i);
     i++;
-    setTimeout(function(){typeWriterEffect(id,contents, i)}, 25);
+    setTimeout(function(){typeWriterEffect(id,contents, i)}, 20);
   }
 }
