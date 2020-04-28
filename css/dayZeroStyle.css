@@ -143,6 +143,35 @@
   border: 2px solid grey;
 }
 
+@media only screen and (max-width: 1100px) {
+  #DZprojLinkA {
+    display: none;
+  }
+
+  .DZAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
+    display: none;
+  }
+  
+  #DZmobileArrows {
+    width: 90%;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #DZmobileArrowLeft {
+    width: 40%;
+  }
+  
+  #DZmobileArrowRight {
+    width: 40%;
+  }
+}
+
 @media only screen and (max-width: 380px) {
   #DZTitle {
     font-size: 45px;
@@ -157,13 +186,6 @@
     display: none;
   }
   
-  .DZAB {
-    width: 25px;
-    height: 305px; 
-    z-index: 1;
-    display: none;
-  }
-  
   #DZslidesDiv {
     height: 218px;
     width: 320px;
@@ -172,22 +194,6 @@
   
   #DZslides {
     height: 218px;
-  }
-  
-  #DZmobileArrows {
-    width: 90%;
-    position: absolute;
-    bottom: 40px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  #DZmobileArrowLeft {
-    width: 40%;
-  }
-  
-  #DZmobileArrowRight {
-    width: 40%;
   }
   
   #DZA2 {
@@ -200,10 +206,6 @@
     margin-left: 0px;
     margin-right: 10px;
     z-index: 5;
-  }
-  
-  #DZprojLinkA {
-    display: none;
   }
 
 }
@@ -222,12 +224,6 @@
     display: none;
   }
   
-  .DZAB {
-    width: 25px;
-    height: 365px; 
-    z-index: 1;
-    display: none;
-  }
   
   #DZslidesDiv {
     height: 283px;
@@ -237,20 +233,6 @@
   
   #DZslides {
     height: 283px;
-  }
-  
-  #DZmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: block;
-  }
-  
-  #DZmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #DZmobileArrowRight {
-    margin-left: 30px;
   }
   
   #DZA2 {
@@ -277,12 +259,6 @@
     height: 570px;
   }
   
-  .DZAB {
-    width: 25px;
-    height: 570px; 
-    z-index: 1;
-  }
-  
   #DZslidesDiv {
     height: 511px;
     width: 750px;
@@ -291,20 +267,6 @@
   
   #DZslides {
     height: 511px;
-  }
-  
-  #DZmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: none;
-  }
-  
-  #DZmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #DZmobileArrowRight {
-    margin-left: 30px;
   }
   
   #DZA2 {
