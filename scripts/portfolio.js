@@ -161,7 +161,7 @@ function setupProjectEvents(projects, numOfSlides) {
   // Set up hover events for project links
   // currently only set up for DZ and DOR
   for(let i = 0; i < projects.length; ++i) {
-    if(projects[i] == "ST" || projects[i] == "FT") 
+    if(projects[i] == "ST") 
       continue;
     $( "#"+ projects[i] +"projLinkA" ).mouseover(function() {
       document.getElementById(projects[i]+"projLinkUnderline").style.transform = "scale(1,0.1)";
@@ -213,7 +213,7 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   }
   
   // Changes the text under image
-  // Currently only works for Day Zero and Dangers of Road
+  // Currently works for Day Zero, Dangers of Road, and Fun Time
   
   changeProjectText(project, slideShowPosition[project+"slidePosition"]); 
   
@@ -232,7 +232,8 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
     }
   }, 450);
   setTimeout(function(){
-    if(parseInt($(idMe(slide)).css("left").split("p")[0]) == lastSlide || parseInt($(idMe(slide)).css("left").split("p")[0]) == firstSlide){
+    if(parseInt($(idMe(slide)).css("left").split("p")[0]) == lastSlide 
+    || parseInt($(idMe(slide)).css("left").split("p")[0]) == firstSlide){
       $(idMe(slide)).css("transition", "left 0.5s ease-out");
     } 
   }, 480);
@@ -245,6 +246,9 @@ function changeProjectText(project, slideNum) {
       typeWriterEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
     case "DOR":
+      textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
+      break;
+    case "FT":
       textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
     default:

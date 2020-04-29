@@ -67,14 +67,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 
 #FTprojBody {
   line-height: 1.5em;
-  background: #F7EDDA;
-  padding: 10px 30px;
-  border-radius: 20px;
+}
+
+#FTprojLink {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+#FTprojLink a {
+  text-decoration: none;
+  font-size: 1.25em;
+  color: black;
 }
 
 #FTslidesDiv {
