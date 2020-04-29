@@ -246,9 +246,10 @@ function changeProjectText(project, slideNum) {
       typeWriterEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
     case "DOR":
-      textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
-      break;
+
     case "FT":
+
+    case "ST":
       textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
     default:
