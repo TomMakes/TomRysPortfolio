@@ -32,7 +32,7 @@ $(window).resize(function(){
 
 window.onload = function() {
   setupMainPageAndNav();
-  setupHoverEventTriggers();
+  setupNavHoverTriggers();
 
   // DOR = Dangers of Road
   // ST = Sticker Trader
@@ -41,7 +41,7 @@ window.onload = function() {
   let projectAcronyms = ["DOR","ST","FT","DZ"];
   let slideAmount =     [ 4,    3,    3,  7  ];
   
-  setupProjectSlideShowButtons(projectAcronyms, slideAmount);
+  setupProjectEvents(projectAcronyms, slideAmount);
   
 };
 
@@ -98,7 +98,7 @@ function setupMainPageAndNav() {
   }
 }
 
-function setupHoverEventTriggers() {
+function setupNavHoverTriggers() {
 	// setup the navigation link hovers
 	for(let i = 1; i <= 4; ++i) {
 		$("#navLink" + i).mouseover(function() {
@@ -108,21 +108,12 @@ function setupHoverEventTriggers() {
 			document.getElementById('navLinkUnderline' + i).style.transform = "scale(0,0)";
 		});
 	}
-	
-	$( "#DZprojLinkA" ).mouseover(function() {
-		document.getElementById("DZprojLinkUnderline").style.transform = "scale(1,0.1)";
-	});
-	$( "#DZprojLinkA" ).mouseleave(function() {
-		document.getElementById("DZprojLinkUnderline").style.transform = "scale(0,0)";
-    });
-	
-	
 }
 
 // This function creates event listeners for each project.
 // It creates an event listener for each left and right button 
 // on a slideshow
-function setupProjectSlideShowButtons(projects, numOfSlides) {
+function setupProjectEvents(projects, numOfSlides) {
   let slideWidth = 1100;
   movingSlide = false;
   slideShowPosition = {};
@@ -166,6 +157,19 @@ function setupProjectSlideShowButtons(projects, numOfSlides) {
     $("#"+ projects[i] +"mobileArrowRight").click(function() {
         thumbnailSlideSetup(projects[i], "right", numOfSlides[i])});
   } 
+  
+  // Set up hover events for project links
+  // currently only set up for DZ and DOR
+  for(let i = 0; i < projects.length; ++i) {
+    if(projects[i] == "ST" || projects[i] == "FT") 
+      continue;
+    $( "#"+ projects[i] +"projLinkA" ).mouseover(function() {
+      document.getElementById(projects[i]+"projLinkUnderline").style.transform = "scale(1,0.1)";
+    });
+    $( "#"+ projects[i] +"projLinkA" ).mouseleave(function() {
+      document.getElementById(projects[i]+"projLinkUnderline").style.transform = "scale(0,0)";
+    });
+  }
 }
 
 
@@ -198,20 +202,21 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   // If slides want to go left, run this, otherwise go right
   if(direction == 0 || direction == "left" || direction == "Left") {
     $(idMe(slide)).css("left", (left + slideWidth));
-    // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to 6, otherwise keep the value.
+    // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to one less than total slides,
+    // otherwise keep the value.
     slideShowPosition[project+"slidePosition"] = 
-    ((--slideShowPosition[project+"slidePosition"]) < 0) ? 6 : slideShowPosition[project+"slidePosition"];
+    ((--slideShowPosition[project+"slidePosition"]) < 0) ? (numOfSlides - 1) : slideShowPosition[project+"slidePosition"];
   } else {
     $(idMe(slide)).css("left", (left - slideWidth));
     slideShowPosition[project+"slidePosition"] = 
-    ((++slideShowPosition[project+"slidePosition"]) > 6) ? 0 : slideShowPosition[project+"slidePosition"];
+    ((++slideShowPosition[project+"slidePosition"]) > (numOfSlides - 1)) ? 0 : slideShowPosition[project+"slidePosition"];
   }
   
   // Changes the text under image
-  // Currently only works for Day Zero
-  if(project = "DZ") {
-    changeProjectText(project, slideShowPosition[project+"slidePosition"]);  
-  }
+  // Currently only works for Day Zero and Dangers of Road
+  
+  changeProjectText(project, slideShowPosition[project+"slidePosition"]); 
+  
     
   setTimeout(function(){
     if(parseInt($(idMe(slide)).css("left").split("p")[0]) >= boundryLeft){
@@ -235,9 +240,16 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
 }
 
 function changeProjectText(project, slideNum) {
-  if(project = "DZ") {
-    typeWriterEffect("DZprojBody", document.getElementById("DZmessage" + slideNum).innerHTML);
+  switch(project) {
+    case "DZ":
+      typeWriterEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
+      break;
+    case "DOR":
+      textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
+      break;
+    default:
   }
+
 }
 
 // This function moves the border around the thumbnails for the slideshow

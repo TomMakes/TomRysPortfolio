@@ -55,14 +55,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 
 #DORprojBody {
   line-height: 1.5em;
-  background: #E8E8E8;
-  padding: 10px 30px;
-  border-radius: 20px;
+}
+
+#DORprojLink {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 90px;
+}
+
+#DORprojLink a {
+  text-decoration: none;
+  font-size: 1.25em;
+  color: black;
 }
 
 #DORslidesDiv {

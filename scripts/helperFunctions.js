@@ -9,13 +9,15 @@ function log(ev) {
  console.log(ev);
 }
 
+// Function hooks onto element described by id,
+// inserts the contents into the element character by character,
+// which creates a typeWriter effect
 function typeWriterEffect( id, contents, i) {
-  // Determine a way to tell the function to stop it's loop of writing the characters.
-  
+  // Check if this isn't looped yet.
   if(i === undefined) {
      i = 0;
   }
-
+  // Return if the message is completed.
   if($("#"+id).html() === contents) {
     return;
   }
@@ -27,4 +29,16 @@ function typeWriterEffect( id, contents, i) {
     i++;
     setTimeout(function(){typeWriterEffect(id,contents, i)}, 20);
   }
+}
+
+// Function hooks onto element described by id,
+// gives it the css elements to create a transition for opacity,
+// changes the content in the element to new content, 
+// fades that content in
+function textFadeOutFadeInEffect( id, contents) {
+  // element to modify
+  let thisEl = document.getElementById(id);
+  thisEl.style.transition = "opacity 0.25s";
+  thisEl.style.opacity = "0";
+  setTimeout(function(){thisEl.innerHTML = contents; thisEl.style.opacity = "1";}, 250);
 }
