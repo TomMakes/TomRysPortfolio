@@ -138,13 +138,15 @@ function setupProjectEvents(projects, numOfSlides) {
     // Create object properties to hold which slide is currently being displayed
     slideShowPosition[projects[i]+"slidePosition"] = 0;
     
-    // Set up event listeners for swipe events
-    let md = new Hammer(document
-                        .getElementById(projects[i] +'slidesDiv'));
+    // Set up event listeners for touch events
+    setupTouchEvents(projects[i]);
+    /*let md = new Hammer(document
+                        .getElementById(projects[i] +'slidesDiv'),
+                        { inputClass: Hammer.TouchMouseInput });
     md.on("swiperight", function() {
         thumbnailSlideSetup(projects[i], "left", numOfSlides[i])}); 
     md.on("swipeleft", function() {
-        thumbnailSlideSetup(projects[i], "right", numOfSlides[i])}); 
+        thumbnailSlideSetup(projects[i], "right", numOfSlides[i])}); */ 
     
     // Set up event listeners for clicking/pressing events
     $("#"+ projects[i] +"A1").click(function() {
@@ -172,6 +174,14 @@ function setupProjectEvents(projects, numOfSlides) {
   }
 }
 
+// currently will be working on the text div's as a test
+function setupTouchEvents(project) {
+  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', process_touchstart, false);
+}
+
+function process_touchstart(ev) {
+  ev.targetTouches[0].target.innerHTML = "Touched!";
+}
 
 // slide: the id of the container that holds every image
 // direction: are we moving left or right from the current slide
