@@ -177,11 +177,31 @@ function setupProjectEvents(projects, numOfSlides) {
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
   document.getElementById(project+"projBodyDiv").addEventListener('touchstart', process_touchstart, false);
+  document.getElementById(project+"projBodyDiv").addEventListener('touchend', process_touchend, false);
 }
 
 function process_touchstart(ev) {
-  ev.targetTouches[0].target.innerHTML = "Touched!";
+  if(ev.targetTouches[0].target.tagName == "DIV")
+    ev.targetTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed On DIV!";
+  else
+    ev.targetTouches[0].target.innerHTML = "Pressed On!";
+  
+  console.dir(ev.targetTouches[0].target.tagName);
+  console.dir(ev.changedTouches);
+  console.log("end of touchStart");
+  // .getElementsByTagName("P"));
+  // .innerHTML = "Pressed On!";
 }
+
+function process_touchend(ev) {
+  // ev.targetTouches[0].target.innerHTML = "Pressed Off!";
+  /*if(ev.changedTouches[0].target.tagName == "DIV")
+    ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed Off DIV!";
+  else
+    ev.changedTouches[0].target.innerHTML = "Pressed Off!"; */
+  console.dir(ev.changedTouches);
+}
+
 
 // slide: the id of the container that holds every image
 // direction: are we moving left or right from the current slide
