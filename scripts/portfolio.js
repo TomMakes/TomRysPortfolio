@@ -184,7 +184,7 @@ function setupTouchEvents(project) {
   // array to store the identifier and position of touches
   var ongoingTouches = [];
   // variable to determine deadzone
-  var deadzone = 200;
+  var deadzone = 100;
   
   function handleTouchstart(ev) {
     // make sure the P tag is targeted to change text
@@ -209,7 +209,8 @@ function setupTouchEvents(project) {
       let idx = ongoingTouchIndexById(ev.changedTouches[i].identifier);
       
       let xdistanceMoved = ev.changedTouches[i].screenX - ongoingTouches[idx].screenX;
-      let directionMoved = (xdistanceMoved => (xdistanceMoved<0) ? "left" : "right");
+      // So this is a IFFE function that uses a ternary operator to return the string left or right to directionMoved
+      let directionMoved = (() => (xdistanceMoved<0) ? "left" : "right")();
       
       if(ev.changedTouches[0].target.tagName == "DIV")
         ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = 
