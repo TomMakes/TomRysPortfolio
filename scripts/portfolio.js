@@ -139,15 +139,8 @@ function setupProjectEvents(projects, numOfSlides) {
     // Create object properties to hold which slide is currently being displayed
     slideShowPosition[projects[i]+"slidePosition"] = 0;
     
-    // Set up event listeners for touch events
+    // Set up event listeners for touch / swipe events
     setupTouchEvents(projects[i]);
-    /*let md = new Hammer(document
-                        .getElementById(projects[i] +'slidesDiv'),
-                        { inputClass: Hammer.TouchMouseInput });
-    md.on("swiperight", function() {
-        thumbnailSlideSetup(projects[i], "left", numOfSlides[i])}); 
-    md.on("swipeleft", function() {
-        thumbnailSlideSetup(projects[i], "right", numOfSlides[i])}); */ 
     
     // Set up event listeners for clicking/pressing events
     $("#"+ projects[i] +"A1").click(function() {
@@ -183,8 +176,7 @@ function setupTouchEvents(project) {
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
-  // variable to determine deadzone
-  var deadzone = 100;
+
   
   function handleTouchstart(ev) {
     // make sure the P tag is targeted to change text
@@ -263,7 +255,7 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   }, 500);
   
   let slide = project +"slides";
-  let left =  parseInt($(idMe(slide)).css("left").split("p")[0]);
+  let cssLeft =  parseInt($(idMe(slide)).css("left").split("p")[0]);
   
   // These four vairables are for determining the end points of the slide show
   // They are important for making the slides wrap
@@ -275,13 +267,13 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   
   // If slides want to go left, run this, otherwise go right
   if(direction == 0 || direction == "left" || direction == "Left") {
-    $(idMe(slide)).css("left", (left + slideWidth));
+    $(idMe(slide)).css("left", (cssLeft + slideWidth));
     // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to one less than total slides,
     // otherwise keep the value.
     slideShowPosition[project+"slidePosition"] = 
     ((--slideShowPosition[project+"slidePosition"]) < 0) ? (numOfSlides - 1) : slideShowPosition[project+"slidePosition"];
   } else {
-    $(idMe(slide)).css("left", (left - slideWidth));
+    $(idMe(slide)).css("left", (cssLeft - slideWidth));
     slideShowPosition[project+"slidePosition"] = 
     ((++slideShowPosition[project+"slidePosition"]) > (numOfSlides - 1)) ? 0 : slideShowPosition[project+"slidePosition"];
   }
