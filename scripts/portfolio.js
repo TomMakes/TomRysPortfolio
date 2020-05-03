@@ -207,6 +207,7 @@ function setupTouchEvents(project) {
     // ev.preventDefault();
     for (let i = 0; i < ev.changedTouches.length; i++) {
       let idx = ongoingTouchIndexById(ev.changedTouches[i].identifier);
+	  //console.dir(ongoingTouches);
       let xdistanceMoved = Math.abs(ev.changedTouches[i].screenX - ongoingTouches[idx].screenX);
       
       if(ev.changedTouches[0].target.tagName == "DIV")
