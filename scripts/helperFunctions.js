@@ -42,3 +42,8 @@ function textFadeOutFadeInEffect( id, contents) {
   thisEl.style.opacity = "0";
   setTimeout(function(){thisEl.innerHTML = contents; thisEl.style.opacity = "1";}, 250);
 }
+
+// taken from https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events/Using_Pointer_Events
+function copyTouch(touch) {
+  return { identifier: touch.pointerId, pageX: touch.clientX, pageY: touch.clientY };
+}

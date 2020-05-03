@@ -1,3 +1,4 @@
+"use strict";
 // Figure out the resolution of the window so I can update variables accordingly
 var windowWidth;
 var windowHeight;
@@ -176,31 +177,69 @@ function setupProjectEvents(projects, numOfSlides) {
 
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
-  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', process_touchstart, false);
-  document.getElementById(project+"projBodyDiv").addEventListener('touchend', process_touchend, false);
-}
-
-function process_touchstart(ev) {
-  if(ev.targetTouches[0].target.tagName == "DIV")
-    ev.targetTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed On DIV!";
-  else
-    ev.targetTouches[0].target.innerHTML = "Pressed On!";
+  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
+  document.getElementById(project+"projBodyDiv").addEventListener('touchmove', handleTouchmove, false);
+  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false);
   
-  console.dir(ev.targetTouches[0].target.tagName);
-  console.dir(ev.changedTouches);
-  console.log("end of touchStart");
-  // .getElementsByTagName("P"));
-  // .innerHTML = "Pressed On!";
+  // array to store the identifier and position of touches
+  var ongoingTouches = [];
+  // variable to determine deadzone
+  var deadzone = 200;
+  
+  function handleTouchstart(ev) {
+    // make sure the P tag is targeted to change text
+    if(ev.targetTouches[0].target.tagName == "DIV")
+      ev.targetTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed On DIV!";
+    else
+      ev.targetTouches[0].target.innerHTML = "Pressed On!";
+    
+    // Store the touches position and identifier in an array
+    for (let i = 0; i < ev.changedTouches.length; i++) {
+      ongoingTouches.push(copyTouch(ev.changedTouches[i]));
+    }
+    
+    console.dir(ev.targetTouches[0].target.tagName);
+    console.dir(ev.changedTouches);
+    console.log("end of touchStart");
+  }
+  
+  function handleTouchmove(ev) {
+    // ev.preventDefault();
+    for (let i = 0; i < ev.changedTouches.length; i++) {
+      let idx = ongoingTouchIndexById(ev.changedTouches[i].identifier);
+      let xdistanceMoved = Math.abs(ev.changedTouches[i].screenX - ongoingTouches[idx].screenX);
+      
+      if(ev.changedTouches[0].target.tagName == "DIV")
+        ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Moved finger " + xdistanceMoved + " pixels!";
+      else
+        ev.changedTouches[0].target.innerHTML = "Moved finger " + xdistanceMoved + " pixels!";
+    }
+
+    
+  }
+  
+  function handleTouchend(ev) {
+    if(!ev.changedTouches[0])
+      return;
+    if(ev.changedTouches[0].target.tagName == "DIV")
+      ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed Off DIV!";
+    else
+      ev.changedTouches[0].target.innerHTML = "Pressed Off!"; 
+    console.dir(ev.changedTouches);
+  }
+  
+  
+  function ongoingTouchIndexById(idToFind) {
+    for (let i = 0; i < ongoingTouches.length; i++) {
+      if (ongoingTouches[i].identifier == idToFind) {
+        return i;
+      }
+    }
+    return -1;    // not found
+  } 
 }
 
-function process_touchend(ev) {
-  // ev.targetTouches[0].target.innerHTML = "Pressed Off!";
-  /*if(ev.changedTouches[0].target.tagName == "DIV")
-    ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed Off DIV!";
-  else
-    ev.changedTouches[0].target.innerHTML = "Pressed Off!"; */
-  console.dir(ev.changedTouches);
-}
+
 
 
 // slide: the id of the container that holds every image
