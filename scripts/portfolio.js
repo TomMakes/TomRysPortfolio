@@ -207,12 +207,16 @@ function setupTouchEvents(project) {
     // ev.preventDefault();
     for (let i = 0; i < ev.changedTouches.length; i++) {
       let idx = ongoingTouchIndexById(ev.changedTouches[i].identifier);
-      let xdistanceMoved = Math.abs(ev.changedTouches[i].screenX - ongoingTouches[idx].screenX);
+      
+      let xdistanceMoved = ev.changedTouches[i].screenX - ongoingTouches[idx].screenX;
+      let directionMoved = (xdistanceMoved => (xdistanceMoved<0) ? "left" : "right");
       
       if(ev.changedTouches[0].target.tagName == "DIV")
-        ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Moved finger " + xdistanceMoved + " pixels!";
+        ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = 
+        "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
       else
-        ev.changedTouches[0].target.innerHTML = "Moved finger " + xdistanceMoved + " pixels!";
+        ev.changedTouches[0].target.innerHTML = 
+        "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
     }
 
     
