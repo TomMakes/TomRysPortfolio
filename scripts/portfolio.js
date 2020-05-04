@@ -236,10 +236,16 @@ function setupTouchEvents(project) {
   } 
 }
 
+// TODO: have moveSlides figure out exactly what value to set left to in order to move the slide smoothly
+// Do this by finding the current value of left, then comparing it to slideWidth, 
+// and figuring out which slideWidth whole value is left closest to.
+
+function centerSlide(project) {
+  
+}
 
 
-
-// slide: the id of the container that holds every image
+// project: the id of the project we are targeting
 // direction: are we moving left or right from the current slide
 // numOfSlides: amount of slides within the slideshow
 // slideWidth: how wide is each image
