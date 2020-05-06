@@ -132,13 +132,43 @@
   border: 2px solid black;
 }
 
+@media only screen and (max-width: 1100px) {
+  
+  #FTA1 {
+    display: none;
+  }
+  
+  #FTA2 {
+    display: none;
+  }
+  
+  #FTmobileArrows {
+    width: 90%;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #FTmobileArrowLeft {
+    width: 40%;
+  }
+  
+  #FTmobileArrowRight {
+    width: 40%;
+  }
+  
+  #FTprojBodyDiv {
+    height: 80px;
+  }
+}
 @media only screen and (max-width: 380px) {
   #FTFTitle {
     font-size: 40px;
   }
   
   #FunTimeFuelSlideShow {
-    height: 300px;
+    height: 320px;
   }
   
   #FTA1 {
@@ -163,20 +193,6 @@
     height: 218px;
   }
   
-  #FTmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: block;
-  }
-  
-  #FTmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #FTmobileArrowRight {
-    margin-left: 30px;
-  }
-  
   #FTA2 {
     height: 305px;
     display: none;
@@ -188,6 +204,7 @@
     margin-right: 10px;
     z-index: 5;
   }
+
 }
 
 @media only screen and (min-width: 381px) and (max-width: 440px) {
@@ -221,20 +238,6 @@
     height: 283px;
   }
   
-  #FTmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: block;
-  }
-  
-  #FTmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #FTmobileArrowRight {
-    margin-left: 30px;
-  }
-  
   #FTA2 {
     height: 305px;
     display: none;
@@ -251,7 +254,7 @@
 @media only screen and (min-width: 441px) and (max-width: 1100px) {
   
   #FunTimeFuelSlideShow {
-    height: 570px;
+    height: 610px;
   }
   
   #FTA1 {

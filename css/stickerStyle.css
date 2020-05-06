@@ -120,24 +120,54 @@
   border: 2px solid black;
 }
 
+@media only screen and (max-width: 1100px) {
+  #STprojLinkA {
+    display: none;
+  }
+  
+  #STA1 {
+    display: none;
+  }
+  
+  #STA2 {
+    display: none;
+  }
+  
+  #STmobileArrows {
+    width: 90%;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #STmobileArrowLeft {
+    width: 40%;
+  }
+  
+  #STmobileArrowRight {
+    width: 40%;
+  }
+  
+  #STprojBodyDiv {
+    height: 90px;
+  }
+}
+
 @media only screen and (max-width: 380px) {
   #StickerTitle {
     font-size: 45px;
   }
   
   #StickerSlideShow {
-    height: 300px;
+    height: 320px;
   }
   
   #STA1 {
-    height: 305px;
     display: none;
   }
   
   .STAB {
-    width: 25px;
-    height: 305px; 
-    z-index: 1;
     display: none;
   }
   
@@ -151,22 +181,7 @@
     height: 218px;
   }
   
-  #STmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: block;
-  }
-  
-  #STmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #STmobileArrowRight {
-    margin-left: 30px;
-  }
-  
   #STA2 {
-    height: 305px;
     display: none;
   }
   
@@ -176,6 +191,7 @@
     margin-right: 10px;
     z-index: 5;
   }
+   
 }
 
 @media only screen and (min-width: 381px) and (max-width: 440px) {
@@ -188,14 +204,10 @@
   }
   
   #STA1 {
-    height: 305px;
     display: none;
   }
   
   .STAB {
-    width: 25px;
-    height: 305px; 
-    z-index: 1;
     display: none;
   }
   
@@ -209,22 +221,7 @@
     height: 283px;
   }
   
-  #STmobileArrows {
-    position: absolute;
-    bottom: 40px;
-    display: block;
-  }
-  
-  #STmobileArrowLeft {
-    margin-right: 30px;
-  }
-  
-  #STmobileArrowRight {
-    margin-left: 30px;
-  }
-  
   #STA2 {
-    height: 305px;
     display: none;
   }
   
@@ -239,7 +236,7 @@
 @media only screen and (min-width: 441px) and (max-width: 1100px) {
   
   #StickerSlideShow {
-    height: 570px;
+    height: 610px;
   }
   
   #STA1 {
