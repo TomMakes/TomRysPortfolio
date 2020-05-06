@@ -11,6 +11,20 @@ var navLinks;
 // object holding current slide positions on each slideshow
 var slideShowPosition;
 
+// DOR = Dangers of Road
+// ST = Sticker Trader
+// FT = Funtime Fuel
+// DZ = Day Zero
+var projectAcronyms = ["DOR","ST","FT","DZ"];
+var slideAmount =     [ 4,    3,    3,  7  ];
+
+/*var projectAcronyms = [
+  { name: "DOR", slideAmount: 4},
+  { name: "ST", slideAmount: 3},
+  { name: "FT", slideAmount: 3},
+  { name: "DZ", slideAmount: 7} ]; */
+
+
 // windowWidth & windowHeight are automatically updated when the browser size is modified
 $(window).resize(function(){
   windowWidth = $(window).width();
@@ -34,13 +48,6 @@ $(window).resize(function(){
 window.onload = function() {
   setupMainPageAndNav();
   setupNavHoverTriggers();
-
-  // DOR = Dangers of Road
-  // ST = Sticker Trader
-  // FT = Funtime Fuel
-  // DZ = Day Zero
-  let projectAcronyms = ["DOR","ST","FT","DZ"];
-  let slideAmount =     [ 4,    3,    3,  7  ];
   
   setupProjectEvents(projectAcronyms, slideAmount);
   
@@ -53,12 +60,15 @@ $(window).scroll(function() {
 	isAtTopOfPage = true; 
 	for(let i = 0; i < navLinks.length; i++){
 		navLinks[i].style.fontSize = '1.7em';
+    // 1.7em for 1080p
 	}
   } 
   else {
 	if(!isAtTopOfPage) return;
 	for(let i = 0; i < navLinks.length; i++){
 		navLinks[i].style.fontSize = '1em';
+    // 1em for 1080p
+    
 		isAtTopOfPage = false;
 	}
   }

@@ -176,29 +176,33 @@ header {
 
 
 @media only screen and (max-width: 450px) {
-  
+
+#heading {
+  height: 2em;
+}
+
 .link a {
     text-decoration: none;
-    font-size: 1.25em;
+    font-size: 0.6em;
     color: dimgrey;
     margin: 0.25em;
     transition: font-size 1s;
 }
-  
-.leftArrowDiv {
-  width: 25px;
+
+.navbarLeft {
+  padding: 0.25em;
 }
-  
-.leftImgArrow {
-  width: 50px;
+
+.navbarLeft > section {
+  padding: 0 0.4em;
 }
-  
-.rightArrowDiv {
-  width: 25px;
+
+.navbarRight {
+  padding: 0.25em;
 }
-  
-.rightImgArrow {
-  width: 50px;
+
+.navbarRight > section {
+  padding: 0 0.4em;
 }
   
 }
