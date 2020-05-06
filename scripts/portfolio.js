@@ -180,9 +180,9 @@ function setupProjectEvents(projects, numOfSlides) {
 
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
-  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
+  /*document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
   document.getElementById(project+"projBodyDiv").addEventListener('touchmove', handleTouchmove, false);
-  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false);
+  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false); */
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
