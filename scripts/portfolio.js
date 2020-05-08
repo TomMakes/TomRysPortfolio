@@ -18,11 +18,11 @@ var slideShowPosition;
 var projectAcronyms = ["DOR","ST","FT","DZ"];
 var slideAmount =     [ 4,    3,    3,  7  ];
 
-/*var projectAcronyms = [
-  { name: "DOR", slideAmount: 4},
-  { name: "ST", slideAmount: 3},
-  { name: "FT", slideAmount: 3},
-  { name: "DZ", slideAmount: 7} ]; */
+var projectSlideAmountLookup = [
+  { DOR: 4},
+  { ST: 3},
+  { FT:  3},
+  { DZ: 7} ]; 
 
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
@@ -182,7 +182,7 @@ function setupProjectEvents(projects, numOfSlides) {
 function setupTouchEvents(project) {
   document.getElementById(project+"-slides").addEventListener('touchstart', handleTouchstart, false);
   document.getElementById(project+"-slides").addEventListener('touchmove', handleTouchmove, false);
-  //document.getElementById(project+"-slides").addEventListener('touchend', handleTouchend, false); 
+  document.getElementById(project+"-slides").addEventListener('touchend', handleTouchend, false); 
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
@@ -221,32 +221,16 @@ function setupTouchEvents(project) {
     let leftVal = parseInt(startingSlidePos) + xdistanceMoved;
     document.getElementById(engagedProject+"-slides").style.left = 
       leftVal + "px";
-      
-    // console.log("Set " + engagedProject+"-slides" + " to " + leftVal + "px");
-    // So this is a IFFE function that uses a ternary operator to return the string left or right to directionMoved
-    // let directionMoved = (() => (xdistanceMoved<0) ? "left" : "right")();
-    
-    /* if(ev.changedTouches[0].target.tagName == "DIV")
-      ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = 
-      "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
-    else
-      ev.changedTouches[0].target.innerHTML = 
-      "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!"; */
-    
   }
   
   function handleTouchend(ev) {
     if(!ev.changedTouches[0])
       return;
-    if(ev.changedTouches[0].target.tagName == "DIV")
-      ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed Off DIV!";
-    else
-      ev.changedTouches[0].target.innerHTML = "Pressed Off!"; 
-    
+    //console.log("touch end is called");
     // determine where to move the slide after user finished interacting
-    centerSlide(ev.changedTouches[0].target.id.split("p")[0], xdistanceMoved);
-    // reset variable for next touch event
-    ongoingTouches.pop();  // remove touch
+    centerSlide(engagedProject, startingSlidePos, xdistanceMoved);
+    // reset variables for next touch event
+    ongoingTouches = [];  // remove touches
   }
   
   
@@ -264,8 +248,52 @@ function setupTouchEvents(project) {
 // Do this by finding the current value of left, then comparing it to slideWidth, 
 // and figuring out which slideWidth whole value is left closest to.
 
-function centerSlide(project) {
+function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
+  isSlideMoving = true;
+
+  let slide = engagedProject+"-slides";
+  // determine the width of the slides
+  let slideWidth = 1100;
+  let lastSlide = projectSlideAmountLookup[engagedProject];
+  let boundryLeft = slideWidth/(-2);
+  let bountryRight = lastSlide - (slideWidth/2);
+  if(windowWidth <= 380) {
+    slideWidth = 320;
+  } else if(windowWidth <= 440) {
+    slideWidth = 400;
+  } else if(windowWidth <= 1100) {
+    slideWidth = 750;
+  } 
   
+  // turn on transition for movement
+  $(idMe(slide)).css("transition", "left 0.3s ease-out");
+  
+  // if the user moved slide less than 1/8th of a slide length, return slide back to it's original position
+  if (Math.abs(distanceMoved) < (slideWidth/8)) {
+    $(idMe(slide)).css("left", (startingSlidePos+"px"));
+  } else {
+    $(idMe(slide)).css("left", 
+      ((() => (distanceMoved<0) ? startingSlidePos-slideWidth : parseInt(startingSlidePos)+slideWidth)()+"px"));
+    moveThumbnail(engagedProject, (() => (distanceMoved<0) ? "left" : "right")());
+  }
+  
+  // todo, make the wrapping of front and back images
+  
+  setTimeout(function(){
+    isSlideMoving = false;
+    // wrap the borders
+    if(parseInt($(idMe(slide)).css("left").split("p")[0]) >= boundryLeft){
+      // Remove transition temporarily so user doesn't notice slide switching
+      $(idMe(slide)).css("transition", "left 0s");
+      $(idMe(slide)).css("left", lastSlide + "px");
+       console.log("hit left: " + boundryLeft);
+    }
+    if(parseInt($(idMe(slide)).css("left").split("p")[0]) <= bountryRight){
+      $(idMe(slide)).css("transition", "left 0s");
+      $(idMe(slide)).css("left", firstSlide + "px");
+       console.log("hit right: " + bountryRight);
+    }
+  }, 300);
 }
 
 
@@ -286,6 +314,8 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   
   let slide = project +"-slides";
   let cssLeft =  parseInt($(idMe(slide)).css("left").split("p")[0]);
+  // Put the correct transition on
+  $(idMe(slide)).css("transition", "left 0.5s ease-out");
   
   // These four vairables are for determining the end points of the slide show
   // They are important for making the slides wrap
