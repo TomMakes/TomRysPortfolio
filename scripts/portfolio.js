@@ -180,9 +180,9 @@ function setupProjectEvents(projects, numOfSlides) {
 
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
-  /*document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
+  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
   document.getElementById(project+"projBodyDiv").addEventListener('touchmove', handleTouchmove, false);
-  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false); */
+  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false); 
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
@@ -194,6 +194,8 @@ function setupTouchEvents(project) {
       ev.targetTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed On DIV!";
     else
       ev.targetTouches[0].target.innerHTML = "Pressed On!";
+    
+    document.getElementById("DZprojLinkA").innerHTML = ev.changedTouches.length+" ";
     
     // Store the touches position and identifier in an array
     for (let i = 0; i < ev.changedTouches.length; i++) {
@@ -221,7 +223,8 @@ function setupTouchEvents(project) {
         ev.changedTouches[0].target.innerHTML = 
         "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
     }
-
+    
+    document.getElementById("DZprojLinkA").innerHTML = ev.changedTouches.length+" ";
     
   }
   
@@ -232,7 +235,8 @@ function setupTouchEvents(project) {
       ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed Off DIV!";
     else
       ev.changedTouches[0].target.innerHTML = "Pressed Off!"; 
-    console.dir(ev.changedTouches);
+    
+    ongoingTouches.pop();  // remove touch
   }
   
   
