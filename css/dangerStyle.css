@@ -81,7 +81,7 @@
   overflow: hidden;
 }
 
-#DORslides {
+#DOR-slides {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -197,7 +197,7 @@
     position: relative;
   }
   
-  #DORslides {
+  #DOR-slides {
     height: 218px;
   }
   
@@ -235,7 +235,7 @@
     position: relative;
   }
   
-  #DORslides {
+  #DOR-slides {
     height: 283px;
   }
   
@@ -268,7 +268,7 @@
     position: relative;
   }
   
-  #DORslides {
+  #DOR-slides {
     height: 511px;
   }
   

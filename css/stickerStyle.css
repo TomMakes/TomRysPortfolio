@@ -81,7 +81,7 @@
   overflow: hidden;
 }
 
-#STslides {
+#ST-slides {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -177,7 +177,7 @@
     position: relative;
   }
   
-  #STslides {
+  #ST-slides {
     height: 218px;
   }
   
@@ -217,7 +217,7 @@
     position: relative;
   }
   
-  #STslides {
+  #ST-slides {
     height: 283px;
   }
   
@@ -255,7 +255,7 @@
     position: relative;
   }
   
-  #STslides {
+  #ST-slides {
     height: 511px;
   }
   

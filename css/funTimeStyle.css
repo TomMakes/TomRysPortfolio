@@ -93,7 +93,7 @@
   overflow: hidden;
 }
 
-#FTslides {
+#FT-slides {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -189,7 +189,7 @@
     position: relative;
   }
   
-  #FTslides {
+  #FT-slides {
     height: 218px;
   }
   
@@ -234,7 +234,7 @@
     position: relative;
   }
   
-  #FTslides {
+  #FT-slides {
     height: 283px;
   }
   
@@ -273,7 +273,7 @@
     position: relative;
   }
   
-  #FTslides {
+  #FT-slides {
     height: 511px;
   }
   

@@ -103,7 +103,7 @@
   overflow: hidden;
 }
 
-#DZslides {
+#DZ-slides {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -195,7 +195,7 @@
     position: relative;
   }
   
-  #DZslides {
+  #DZ-slides {
     height: 218px;
   }
   
@@ -234,7 +234,7 @@
     position: relative;
   }
   
-  #DZslides {
+  #DZ-slides {
     height: 283px;
   }
   
@@ -268,7 +268,7 @@
     position: relative;
   }
   
-  #DZslides {
+  #DZ-slides {
     height: 511px;
   }
   

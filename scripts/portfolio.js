@@ -3,7 +3,7 @@
 var windowWidth;
 var windowHeight;
 // Is the slide currently being changed or no?
-var movingSlide;
+var isSlideMoving;
 // bool to say if user is at the top of the portfolio page
 var isAtTopOfPage = true;
 // array of navigation menu links.
@@ -126,7 +126,7 @@ function setupNavHoverTriggers() {
 // on a slideshow
 function setupProjectEvents(projects, numOfSlides) {
   let slideWidth = 1100;
-  movingSlide = false;
+  isSlideMoving = false;
   slideShowPosition = {};
   
   if(windowWidth <= 380) {
@@ -144,7 +144,7 @@ function setupProjectEvents(projects, numOfSlides) {
   
   for(let i = 0; i < projects.length; i++) {
     // Put the slideshow in correct position
-    $("#"+ projects[i] +"slides").css("left", (-1*slideWidth) + "px");
+    $("#"+ projects[i] +"-slides").css("left", (-1*slideWidth) + "px");
     
     // Create object properties to hold which slide is currently being displayed
     slideShowPosition[projects[i]+"slidePosition"] = 0;
@@ -180,51 +180,58 @@ function setupProjectEvents(projects, numOfSlides) {
 
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
-  document.getElementById(project+"projBodyDiv").addEventListener('touchstart', handleTouchstart, false);
-  document.getElementById(project+"projBodyDiv").addEventListener('touchmove', handleTouchmove, false);
-  document.getElementById(project+"projBodyDiv").addEventListener('touchend', handleTouchend, false); 
+  document.getElementById(project+"-slides").addEventListener('touchstart', handleTouchstart, false);
+  document.getElementById(project+"-slides").addEventListener('touchmove', handleTouchmove, false);
+  //document.getElementById(project+"-slides").addEventListener('touchend', handleTouchend, false); 
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
-
+  // the distance traveled by the finger horizontally
+  let xdistanceMoved = 0;
+  let engagedProject;
+  let startingSlidePos;
   
   function handleTouchstart(ev) {
-    // make sure the P tag is targeted to change text
-    if(ev.targetTouches[0].target.tagName == "DIV")
-      ev.targetTouches[0].target.getElementsByTagName("P")[0].innerHTML = "Pressed On DIV!";
-    else
-      ev.targetTouches[0].target.innerHTML = "Pressed On!";
+    // do nothing if the slide is currently in motion from a button pressing
+    if(isSlideMoving)
+      return;
+    document.getElementById("DZprojLinkA").innerHTML = "Pressed On " +ev.targetTouches[0].target.parentElement.id.split("-")[0] + "!";
     
-    document.getElementById("DZprojLinkA").innerHTML = ev.changedTouches.length+" ";
+    // store the starting pixel position of the slide
+    startingSlidePos = ev.targetTouches[0].target.parentElement.style.left.split("p")[0];
+    engagedProject = ev.targetTouches[0].target.parentElement.id.split("-")[0];
+    
+    // turn off transition for movement
+    $(idMe(engagedProject+"-slides")).css("transition", "left 0s");
     
     // Store the touches position and identifier in an array
     for (let i = 0; i < ev.changedTouches.length; i++) {
       ongoingTouches.push(copyTouch(ev.changedTouches[i]));
     }
-    
-    console.dir(ev.targetTouches[0].target.tagName);
-    console.dir(ev.changedTouches);
-    console.log("end of touchStart");
   }
   
   function handleTouchmove(ev) {
-    // ev.preventDefault();
-    for (let i = 0; i < ev.changedTouches.length; i++) {
-      let idx = ongoingTouchIndexById(ev.changedTouches[i].identifier);
-      
-      let xdistanceMoved = ev.changedTouches[i].screenX - ongoingTouches[idx].screenX;
-      // So this is a IFFE function that uses a ternary operator to return the string left or right to directionMoved
-      let directionMoved = (() => (xdistanceMoved<0) ? "left" : "right")();
-      
-      if(ev.changedTouches[0].target.tagName == "DIV")
-        ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = 
-        "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
-      else
-        ev.changedTouches[0].target.innerHTML = 
-        "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
-    }
+    if(isSlideMoving)
+      return;
+    ev.preventDefault();
     
-    document.getElementById("DZprojLinkA").innerHTML = ev.changedTouches.length+" ";
+    let idx = ongoingTouchIndexById(ev.changedTouches[0].identifier);
+    xdistanceMoved = ev.changedTouches[0].screenX - ongoingTouches[idx].screenX;
+    // have slide postion respond to touch
+    let leftVal = parseInt(startingSlidePos) + xdistanceMoved;
+    document.getElementById(engagedProject+"-slides").style.left = 
+      leftVal + "px";
+      
+    // console.log("Set " + engagedProject+"-slides" + " to " + leftVal + "px");
+    // So this is a IFFE function that uses a ternary operator to return the string left or right to directionMoved
+    // let directionMoved = (() => (xdistanceMoved<0) ? "left" : "right")();
+    
+    /* if(ev.changedTouches[0].target.tagName == "DIV")
+      ev.changedTouches[0].target.getElementsByTagName("P")[0].innerHTML = 
+      "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!";
+    else
+      ev.changedTouches[0].target.innerHTML = 
+      "Moved finger " + directionMoved + " " + xdistanceMoved + " pixels!"; */
     
   }
   
@@ -236,6 +243,9 @@ function setupTouchEvents(project) {
     else
       ev.changedTouches[0].target.innerHTML = "Pressed Off!"; 
     
+    // determine where to move the slide after user finished interacting
+    centerSlide(ev.changedTouches[0].target.id.split("p")[0], xdistanceMoved);
+    // reset variable for next touch event
     ongoingTouches.pop();  // remove touch
   }
   
@@ -266,15 +276,15 @@ function centerSlide(project) {
 
 function moveSlides(project, direction, numOfSlides, slideWidth) {
   // Check if the slide isn't currently moving
-  if(movingSlide) return;
+  if(isSlideMoving) return;
   // Set moving to true while completing this function
-  movingSlide = true;
+  isSlideMoving = true;
   // Set it back to false after moving is completed in duration of time
   setTimeout(function(){
-    movingSlide = false;
+    isSlideMoving = false;
   }, 500);
   
-  let slide = project +"slides";
+  let slide = project +"-slides";
   let cssLeft =  parseInt($(idMe(slide)).css("left").split("p")[0]);
   
   // These four vairables are for determining the end points of the slide show
@@ -332,9 +342,7 @@ function changeProjectText(project, slideNum) {
       typeWriterEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
     case "DOR":
-
     case "FT":
-
     case "ST":
       textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
@@ -349,7 +357,7 @@ function changeProjectText(project, slideNum) {
 
 function moveThumbnail(group, direction) {
   // Check if the slide isn't currently moving
-  if(movingSlide) return;
+  if(isSlideMoving) return;
   
   // get array of thumbnail images
   let thumbnails = document.getElementsByClassName(group +"thumbnail");
