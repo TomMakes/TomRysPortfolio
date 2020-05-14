@@ -19,10 +19,10 @@ var projectAcronyms = ["DOR","ST","FT","DZ"];
 var slideAmount =     [ 4,    3,    3,  7  ];
 
 var projectSlideAmountLookup = [
-  { DOR: 4},
-  { ST: 3},
-  { FT:  3},
-  { DZ: 7} ]; 
+  { fullName: "Dangers of the Road", shortName: "DOR", slideAmount: 4},
+  { fullName: "Sticker Trader", shortName: "ST", slideAmount: 3},
+  { fullName: "Fun Time Fuel", shortName: "FT", slideAmount: 3},
+  { fullName: "Day Zero", shortName: "DZ", slideAmount: 7} ];
 
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
@@ -138,6 +138,8 @@ function setupProjectEvents(projects, numOfSlides) {
   } 
   
   function thumbnailSlideSetup(project, direction, slides) {
+    // Check if the slide isn't currently moving
+    if(isSlideMoving) return;
     moveThumbnail(project, direction);
     moveSlides(project, direction, slides, slideWidth);
   }
@@ -226,7 +228,8 @@ function setupTouchEvents(project) {
   function handleTouchend(ev) {
     if(!ev.changedTouches[0])
       return;
-    //console.log("touch end is called");
+    
+    console.log("touch end is called");
     // determine where to move the slide after user finished interacting
     centerSlide(engagedProject, startingSlidePos, xdistanceMoved);
     // reset variables for next touch event
@@ -264,7 +267,7 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
   } else if(windowWidth <= 1100) {
     slideWidth = 750;
   } 
-  
+
   // turn on transition for movement
   $(idMe(slide)).css("transition", "left 0.3s ease-out");
   
@@ -274,7 +277,7 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
   } else {
     $(idMe(slide)).css("left", 
       ((() => (distanceMoved<0) ? startingSlidePos-slideWidth : parseInt(startingSlidePos)+slideWidth)()+"px"));
-    moveThumbnail(engagedProject, (() => (distanceMoved<0) ? "left" : "right")());
+    moveThumbnail(engagedProject, (() => (distanceMoved<0) ? "right" : "left")());
   }
   
   // todo, make the wrapping of front and back images
@@ -303,8 +306,6 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
 // slideWidth: how wide is each image
 
 function moveSlides(project, direction, numOfSlides, slideWidth) {
-  // Check if the slide isn't currently moving
-  if(isSlideMoving) return;
   // Set moving to true while completing this function
   isSlideMoving = true;
   // Set it back to false after moving is completed in duration of time
@@ -386,8 +387,6 @@ function changeProjectText(project, slideNum) {
 // direction: does the border move left or right?
 
 function moveThumbnail(group, direction) {
-  // Check if the slide isn't currently moving
-  if(isSlideMoving) return;
   
   // get array of thumbnail images
   let thumbnails = document.getElementsByClassName(group +"thumbnail");
