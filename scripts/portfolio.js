@@ -18,11 +18,17 @@ var slideShowPosition;
 var projectAcronyms = ["DOR","ST","FT","DZ"];
 var slideAmount =     [ 4,    3,    3,  7  ];
 
-var projectSlideAmountLookup = [
+var projectSlideAmountLookup = {
+  "DOR": 4,
+  "ST": 3,
+  "FT": 3,
+  "DZ": 7
+};
+/*var projectSlideAmountLookup = [
   { fullName: "Dangers of the Road", shortName: "DOR", slideAmount: 4},
   { fullName: "Sticker Trader", shortName: "ST", slideAmount: 3},
   { fullName: "Fun Time Fuel", shortName: "FT", slideAmount: 3},
-  { fullName: "Day Zero", shortName: "DZ", slideAmount: 7} ];
+  { fullName: "Day Zero", shortName: "DZ", slideAmount: 7} ]; */
 
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
@@ -229,7 +235,6 @@ function setupTouchEvents(project) {
     if(!ev.changedTouches[0])
       return;
     
-    console.log("touch end is called");
     // determine where to move the slide after user finished interacting
     centerSlide(engagedProject, startingSlidePos, xdistanceMoved);
     // reset variables for next touch event
@@ -247,17 +252,13 @@ function setupTouchEvents(project) {
   } 
 }
 
-// TODO: have moveSlides figure out exactly what value to set left to in order to move the slide smoothly
-// Do this by finding the current value of left, then comparing it to slideWidth, 
-// and figuring out which slideWidth whole value is left closest to.
-
 function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
   isSlideMoving = true;
 
   let slide = engagedProject+"-slides";
   // determine the width of the slides
   let slideWidth = 1100;
-  let lastSlide = projectSlideAmountLookup[engagedProject];
+  let lastSlide = 0 - slideWidth * projectSlideAmountLookup[engagedProject];
   let boundryLeft = slideWidth/(-2);
   let bountryRight = lastSlide - (slideWidth/2);
   if(windowWidth <= 380) {
@@ -293,7 +294,7 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
     }
     if(parseInt($(idMe(slide)).css("left").split("p")[0]) <= bountryRight){
       $(idMe(slide)).css("transition", "left 0s");
-      $(idMe(slide)).css("left", firstSlide + "px");
+      $(idMe(slide)).css("left", (-1*slideWidth) + "px");
        console.log("hit right: " + bountryRight);
     }
   }, 300);
