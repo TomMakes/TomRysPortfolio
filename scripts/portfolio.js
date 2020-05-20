@@ -277,11 +277,12 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
     $(idMe(slide)).css("left", (startingSlidePos+"px"));
   } else {
     $(idMe(slide)).css("left", 
-      ((() => (distanceMoved<0) ? startingSlidePos-slideWidth : parseInt(startingSlidePos)+slideWidth)()+"px"));
+      ((() => (distanceMoved<0) ? 
+      parseInt(startingSlidePos)-slideWidth : parseInt(startingSlidePos)+slideWidth)()+"px"));
     moveThumbnail(engagedProject, (() => (distanceMoved<0) ? "right" : "left")());
+    updateSlideShowPosition(engagedProject, (() => (distanceMoved<0) ? "right" : "left")());
+    changeProjectText(engagedProject); 
   }
-  
-  // todo, make the wrapping of front and back images
   
   setTimeout(function(){
     isSlideMoving = false;
@@ -330,20 +331,13 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   // If slides want to go left, run this, otherwise go right
   if(direction == 0 || direction == "left" || direction == "Left") {
     $(idMe(slide)).css("left", (cssLeft + slideWidth));
-    // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to one less than total slides,
-    // otherwise keep the value.
-    slideShowPosition[project+"slidePosition"] = 
-    ((--slideShowPosition[project+"slidePosition"]) < 0) ? (numOfSlides - 1) : slideShowPosition[project+"slidePosition"];
   } else {
     $(idMe(slide)).css("left", (cssLeft - slideWidth));
-    slideShowPosition[project+"slidePosition"] = 
-    ((++slideShowPosition[project+"slidePosition"]) > (numOfSlides - 1)) ? 0 : slideShowPosition[project+"slidePosition"];
   }
+  updateSlideShowPosition(project, direction);
   
   // Changes the text under image
-  // Currently works for Day Zero, Dangers of Road, and Fun Time
-  
-  changeProjectText(project, slideShowPosition[project+"slidePosition"]); 
+  changeProjectText(project); 
   
     
   setTimeout(function(){
@@ -368,7 +362,23 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   
 }
 
-function changeProjectText(project, slideNum) {
+function updateSlideShowPosition(project, direction) {
+  let slide = project +"-slides";
+  let numOfSlides = projectSlideAmountLookup[project];
+    
+  if(direction == 0 || direction == "left" || direction == "Left") {
+    // Decrease slideShowPosition[n] by one, then check if this is less than 0. If it is, set it to one less than total slides,
+    // otherwise keep the value.
+    slideShowPosition[project+"slidePosition"] = 
+    ((--slideShowPosition[project+"slidePosition"]) < 0) ? (numOfSlides - 1) : slideShowPosition[project+"slidePosition"];
+  } else {
+    slideShowPosition[project+"slidePosition"] = 
+    ((++slideShowPosition[project+"slidePosition"]) > (numOfSlides - 1)) ? 0 : slideShowPosition[project+"slidePosition"];
+  }
+}
+
+function changeProjectText(project) {
+  let slideNum = slideShowPosition[project+"slidePosition"];
   switch(project) {
     case "DZ":
       typeWriterEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
