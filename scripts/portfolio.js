@@ -20,7 +20,7 @@ var slideShowPosition;
 // FT = Funtime Fuel
 // DZ = Day Zero
 var projectAcronyms = ["DOR","ST","FT","DZ"];
-var slideAmount =     [ 4,    3,    3,  7  ];
+// var slideAmount =     [ 4,    3,    3,  7  ];
 
 var projectSlideAmountLookup = {
   "DOR": 4,
@@ -59,7 +59,7 @@ window.onload = function() {
   setupMainPageAndNav();
   setupNavHoverTriggers();
   
-  setupProjectEvents(projectAcronyms, slideAmount);
+  setupProjectEvents(projectAcronyms);
   
   window.addEventListener('scroll', checkIsScrollAllowed);
 };
@@ -71,14 +71,12 @@ $(window).scroll(function() {
 	isAtTopOfPage = true; 
 	for(let i = 0; i < navLinks.length; i++){
 		navLinks[i].style.fontSize = '1.7em';
-    // 1.7em for 1080p
 	}
   } 
   else {
 	if(!isAtTopOfPage) return;
 	for(let i = 0; i < navLinks.length; i++){
 		navLinks[i].style.fontSize = '1em';
-    // 1em for 1080p
     
 		isAtTopOfPage = false;
 	}
@@ -135,7 +133,7 @@ function setupNavHoverTriggers() {
 // This function creates event listeners for each project.
 // It creates an event listener for each left and right button 
 // on a slideshow
-function setupProjectEvents(projects, numOfSlides) {
+function setupProjectEvents(projects) {
   let slideWidth = 1100;
   isSlideMoving = false;
   slideShowPosition = {};
@@ -148,11 +146,11 @@ function setupProjectEvents(projects, numOfSlides) {
     slideWidth = 750;
   } 
   
-  function thumbnailSlideSetup(project, direction, slides) {
+  function thumbnailSlideSetup(project, direction) {
     // Check if the slide isn't currently moving
     if(isSlideMoving) return;
     moveThumbnail(project, direction);
-    moveSlides(project, direction, slides, slideWidth);
+    moveSlides(project, direction, slideWidth);
   }
   
   for(let i = 0; i < projects.length; i++) {
@@ -167,14 +165,14 @@ function setupProjectEvents(projects, numOfSlides) {
     
     // Set up event listeners for clicking/pressing events
     $("#"+ projects[i] +"A1").click(function() {
-        thumbnailSlideSetup(projects[i], "left", numOfSlides[i])}); 
+        thumbnailSlideSetup(projects[i], "left")}); 
     $("#"+ projects[i] +"A2").click(function() {
-        thumbnailSlideSetup(projects[i], "right", numOfSlides[i])});
+        thumbnailSlideSetup(projects[i], "right")});
     
     $("#"+ projects[i] +"mobileArrowLeft").click(function() {
-        thumbnailSlideSetup(projects[i], "left", numOfSlides[i])});
+        thumbnailSlideSetup(projects[i], "left")});
     $("#"+ projects[i] +"mobileArrowRight").click(function() {
-        thumbnailSlideSetup(projects[i], "right", numOfSlides[i])});
+        thumbnailSlideSetup(projects[i], "right")});
   } 
   
   // Set up hover events for project links
@@ -330,7 +328,7 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
 // numOfSlides: amount of slides within the slideshow
 // slideWidth: how wide is each image
 
-function moveSlides(project, direction, numOfSlides, slideWidth) {
+function moveSlides(project, direction, slideWidth) {
   // Set moving to true while completing this function
   isSlideMoving = true;
   // Set it back to false after moving is completed in duration of time
@@ -345,6 +343,7 @@ function moveSlides(project, direction, numOfSlides, slideWidth) {
   
   // These four vairables are for determining the end points of the slide show
   // They are important for making the slides wrap
+  let numOfSlides = projectSlideAmountLookup[project];
   let firstSlide = 0 - slideWidth;
   let lastSlide = 0 - slideWidth * numOfSlides;
   let boundryLeft = firstSlide/2;
@@ -417,18 +416,18 @@ function changeProjectText(project) {
 }
 
 // This function moves the border around the thumbnails for the slideshow
-// group: the class of images that will be controlled
+// project: the class of images that will be controlled
 // direction: does the border move left or right?
 
-function moveThumbnail(group, direction) {
+function moveThumbnail(project, direction) {
   
   // get array of thumbnail images
-  let thumbnails = document.getElementsByClassName(group +"thumbnail");
+  let thumbnails = document.getElementsByClassName(project +"thumbnail");
   let currentlyHighlighted = 0;
   
   // find which thumbnail is currently highlighted
   for(let i = 0; i < thumbnails.length; i++) {
-    if( $(thumbnails[i]).hasClass(group + "thumbnailSelected")){
+    if( $(thumbnails[i]).hasClass(project + "thumbnailSelected")){
       currentlyHighlighted = i;
       break;
     }
@@ -436,16 +435,16 @@ function moveThumbnail(group, direction) {
   
   // Determine if moving left or right
   if(direction == 0 || direction == "left" || direction == "Left") {
-    thumbnails[currentlyHighlighted].classList.remove(group + "thumbnailSelected");
+    thumbnails[currentlyHighlighted].classList.remove(project + "thumbnailSelected");
     if(currentlyHighlighted == 0) 
       currentlyHighlighted = thumbnails.length;
-    thumbnails[currentlyHighlighted-1].classList.add(group + "thumbnailSelected");
+    thumbnails[currentlyHighlighted-1].classList.add(project + "thumbnailSelected");
   } else {
     //console.log(currentlyHighlighted);
-    thumbnails[currentlyHighlighted].classList.remove(group + "thumbnailSelected");
+    thumbnails[currentlyHighlighted].classList.remove(project + "thumbnailSelected");
     if(currentlyHighlighted == (thumbnails.length-1))
       currentlyHighlighted = -1; 
-    thumbnails[currentlyHighlighted+1].classList.add(group + "thumbnailSelected");
+    thumbnails[currentlyHighlighted+1].classList.add(project + "thumbnailSelected");
     //console.log(thumbnails.length);
   }
 }
