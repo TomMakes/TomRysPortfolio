@@ -6,6 +6,10 @@ var windowHeight;
 var isSlideMoving;
 // bool to say if user is at the top of the portfolio page
 var isAtTopOfPage = true;
+// bool that says if scrolling is allowed by the user
+var isScrollAllowed = true;
+// Where the scroll position currently is
+var curScrollPosY = 0;
 // array of navigation menu links.
 var navLinks;
 // object holding current slide positions on each slideshow
@@ -57,6 +61,7 @@ window.onload = function() {
   
   setupProjectEvents(projectAcronyms, slideAmount);
   
+  window.addEventListener('scroll', checkIsScrollAllowed);
 };
 
 // event listener for when the window is scrolled down. 
@@ -188,16 +193,18 @@ function setupProjectEvents(projects, numOfSlides) {
 
 // currently will be working on the text div's as a test
 function setupTouchEvents(project) {
-  document.getElementById(project+"-slides").addEventListener('touchstart', handleTouchstart, false);
-  document.getElementById(project+"-slides").addEventListener('touchmove', handleTouchmove, false);
-  document.getElementById(project+"-slides").addEventListener('touchend', handleTouchend, false); 
+  document.getElementById(project+"-slides").addEventListener('touchstart', handleTouchstart);
+  document.getElementById(project+"-slides").addEventListener('touchmove', handleTouchmove);
+  document.getElementById(project+"-slides").addEventListener('touchend', handleTouchend); 
   
   // array to store the identifier and position of touches
   var ongoingTouches = [];
   // the distance traveled by the finger horizontally
   let xdistanceMoved = 0;
+  let ydistanceMoved = 0;
   let engagedProject;
   let startingSlidePos;
+  let isInteracting = false;
   
   function handleTouchstart(ev) {
     // do nothing if the slide is currently in motion from a button pressing
@@ -219,12 +226,24 @@ function setupTouchEvents(project) {
   }
   
   function handleTouchmove(ev) {
+    // makes it so user cannot interrupt the slide changing animation by pressing on screen again
     if(isSlideMoving)
       return;
-    ev.preventDefault();
+    
+    if(!isInteracting && Math.abs(ydistanceMoved) < 50 && Math.abs(xdistanceMoved) > 25) {
+      isInteracting = true;
+      isScrollAllowed = false;
+    } 
+    
+    if(isScrollAllowed)
+      curScrollPosY = window.scrollY;
+    
+    if(isInteracting)
+      ev.preventDefault();
     
     let idx = ongoingTouchIndexById(ev.changedTouches[0].identifier);
     xdistanceMoved = ev.changedTouches[0].screenX - ongoingTouches[idx].screenX;
+    ydistanceMoved = ev.changedTouches[0].screenY - ongoingTouches[idx].screenY;
     // have slide postion respond to touch
     let leftVal = parseInt(startingSlidePos) + xdistanceMoved;
     document.getElementById(engagedProject+"-slides").style.left = 
@@ -239,6 +258,10 @@ function setupTouchEvents(project) {
     centerSlide(engagedProject, startingSlidePos, xdistanceMoved);
     // reset variables for next touch event
     ongoingTouches = [];  // remove touches
+    isInteracting = false;
+    xdistanceMoved = 0;
+    ydistanceMoved = 0;
+    isScrollAllowed = true;
   }
   
   
@@ -425,6 +448,13 @@ function moveThumbnail(group, direction) {
     thumbnails[currentlyHighlighted+1].classList.add(group + "thumbnailSelected");
     //console.log(thumbnails.length);
   }
+}
+
+function checkIsScrollAllowed(ev) {
+  window.requestAnimationFrame(function() {
+    if(!isScrollAllowed)
+      window.scrollTo(0, curScrollPosY);
+  });
 }
 
 
