@@ -26,7 +26,7 @@ svg {
   opacity: 1;
   position: fixed;
   left:200px;
-  top:100px;
+  top:10px;
 }
 
 #barChart {
@@ -47,6 +47,16 @@ svg {
   padding-bottom: 5px;
   padding-top: 1px;
   border: 1px solid;
+}
+
+#title {
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+#info {
+  margin-top: 0px;
+  padding: 0px;
 }
 
 .step0 {
