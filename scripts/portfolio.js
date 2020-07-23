@@ -208,12 +208,15 @@ function setupTouchEvents(project) {
     // do nothing if the slide is currently in motion from a button pressing
     if(isSlideMoving)
       return;
-    document.getElementById("DZprojLinkA").innerHTML = "Pressed On " +ev.targetTouches[0].target.parentElement.id.split("-")[0] + "!";
     
     // store the starting pixel position of the slide
     startingSlidePos = ev.targetTouches[0].target.parentElement.style.left.split("p")[0];
     engagedProject = ev.targetTouches[0].target.parentElement.id.split("-")[0];
     
+    // if project is Day Zero and the swipe indicator is showing, hide the swipe indicator
+    if(engagedProject == "DZ" && (document.getElementById("swipeGif").style.display != "none"))
+      document.getElementById("swipeGif").style.display = "none";
+
     // turn off transition for movement
     $(idMe(engagedProject+"-slides")).css("transition", "left 0s");
     
@@ -279,9 +282,6 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
   let slide = engagedProject+"-slides";
   // determine the width of the slides
   let slideWidth = 1100;
-  let lastSlide = 0 - slideWidth * projectSlideAmountLookup[engagedProject];
-  let boundryLeft = slideWidth/(-2);
-  let bountryRight = lastSlide - (slideWidth/2);
   if(windowWidth <= 380) {
     slideWidth = 320;
   } else if(windowWidth <= 440) {
@@ -289,6 +289,10 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
   } else if(windowWidth <= 1100) {
     slideWidth = 750;
   } 
+  let lastSlide = 0 - slideWidth * projectSlideAmountLookup[engagedProject];
+  let boundryLeft = slideWidth/(-2);
+  let bountryRight = lastSlide - (slideWidth/2);
+
 
   // turn on transition for movement
   $(idMe(slide)).css("transition", "left 0.3s ease-out");
@@ -312,12 +316,10 @@ function centerSlide(engagedProject, startingSlidePos, distanceMoved) {
       // Remove transition temporarily so user doesn't notice slide switching
       $(idMe(slide)).css("transition", "left 0s");
       $(idMe(slide)).css("left", lastSlide + "px");
-       console.log("hit left: " + boundryLeft);
     }
     if(parseInt($(idMe(slide)).css("left").split("p")[0]) <= bountryRight){
       $(idMe(slide)).css("transition", "left 0s");
       $(idMe(slide)).css("left", (-1*slideWidth) + "px");
-       console.log("hit right: " + bountryRight);
     }
   }, 300);
 }
@@ -367,12 +369,10 @@ function moveSlides(project, direction, slideWidth) {
       // Remove transition temporarily so user doesn't notice slide switching
       $(idMe(slide)).css("transition", "left 0s");
       $(idMe(slide)).css("left", lastSlide + "px");
-       console.log("hit left: " + boundryLeft);
     }
     if(parseInt($(idMe(slide)).css("left").split("p")[0]) <= bountryRight){
       $(idMe(slide)).css("transition", "left 0s");
       $(idMe(slide)).css("left", firstSlide + "px");
-       console.log("hit right: " + bountryRight);
     }
   }, 450);
   setTimeout(function(){
@@ -440,12 +440,10 @@ function moveThumbnail(project, direction) {
       currentlyHighlighted = thumbnails.length;
     thumbnails[currentlyHighlighted-1].classList.add(project + "thumbnailSelected");
   } else {
-    //console.log(currentlyHighlighted);
     thumbnails[currentlyHighlighted].classList.remove(project + "thumbnailSelected");
     if(currentlyHighlighted == (thumbnails.length-1))
       currentlyHighlighted = -1; 
     thumbnails[currentlyHighlighted+1].classList.add(project + "thumbnailSelected");
-    //console.log(thumbnails.length);
   }
 }
 

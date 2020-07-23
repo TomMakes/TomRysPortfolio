@@ -118,6 +118,11 @@
   display: none;
 }
 
+#swipeGif {
+  display: none;
+}
+
+
 .DZspace {
   background: #000000;
   flex-grow: 1;
@@ -144,7 +149,7 @@
 
 @media only screen and (max-width: 1100px) {
   #DZprojLinkA {
-    display: block;
+    display: none;
   }
 
   .DZAB {
@@ -194,6 +199,14 @@
     width: 320px;
     position: relative;
   }
+
+  #swipeGif {
+    display: inline;
+    position: relative;
+    top: 143px;
+    z-index: 2;
+  }
+  
   
   #DZ-slides {
     height: 218px;
@@ -232,6 +245,13 @@
     height: 283px;
     width: 400px;
     position: relative;
+  }
+
+  #swipeGif {
+    display: inline;
+    position: relative;
+    top: 208px;
+    z-index: 2;
   }
   
   #DZ-slides {
