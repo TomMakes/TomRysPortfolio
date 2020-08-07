@@ -1,7 +1,7 @@
-#dangerPageStickerPageBreak {
+#dayZeroPageStickerPageBreak {
   overflow: hidden;
   height: 90px;
-  background-image: url("../media/websiteMedia/dangersStickerTraderBreak.png");
+  background-image: url("../media/websiteMedia/dayZeroStickerBreak.png");
   background-repeat: repeat-x;
 }
 

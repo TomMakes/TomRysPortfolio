@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WoW Character Lookup</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap');
+  </style> 
+  <link rel="stylesheet"type="text/css"href="style/main.css">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="scripts/client.js"></script>
+  <script type="text/javascript" src="scripts/hoverDescLogic.js"></script>
+  <script type="text/javascript" src="scripts/dataLoad.js"></script>
+</head>
+
+<body>
+<div id="content">
+  <div id="div-search">
+    <img id="eagleLogo" alt="No img" src="media/emptyLogo.png" />
+    <form id="search-form" class="flex-column flex-center" onsubmit="loadTestData(event)">
+      <input type="text" id="charName" value="Character Name">
+      <input type="text" id="realmName" value="Realm Name">
+      <input type="submit" id="charSearch" value="Search">
+    </form> 
+  </div>
+  
+  <div id="div-results" class="flex-row flex-center">
+    <div id="div-results-left" class="flex-row">
+      <div id="stats" class="flex-row">
+        <div id="div-stats-col-left">
+          <h2 class="category"> Attributes </h2>
+          <div id="div-attributes" class="flex-row">
+            <div>
+              <p>Strength</p>
+              <p>Agility</p>
+              <p>Intellect</p>
+              <p>Stamina</p>
+            </div>
+            <div class="hidden char2-data">
+              <p id="strength-comp-stat" class="stat"> -- </p>
+              <p id="agility-comp-stat" class="stat-special"> -- </p>
+              <p id="intellect-comp-stat" class="stat"> -- </p>
+              <p id="stamina-comp-stat" class="stat-special"> -- </p>
+            </div>
+            <div class="char1-data">
+              <p id="strength-stat" class="stat"> -- </p>
+              <p id="agility-stat" class="stat-special"> -- </p>
+              <p id="intellect-stat" class="stat"> -- </p>
+              <p id="stamina-stat" class="stat-special"> -- </p>
+            </div>
+          </div>
+          <h2 class="category"> Attack </h2>
+          <div id="div-attack" class="flex-row">
+            <div>
+              <p> Damage </p>
+              <p> Speed </p>
+            </div>
+            <div class="hidden char2-data">
+              <p id="damage-comp-stat" class="stat"> -- </p>
+              <p id="speed-comp-stat" class="stat"> -- </p>
+            </div>
+            <div class="char1-data">
+              <p id="damage-stat" class="stat"> -- </p>
+              <p id="speed-stat" class="stat"> -- </p>
+            </div>
+          </div>
+          <h2 class="category"> Spell </h2>
+          <div id="div-spell" class="flex-row">
+            <div >
+              <p> Mana Regen </p>
+            </div>
+            <div class="hidden char2-data">
+              <p id="mana-regen-comp-stat" class="stat"> -- </p>
+            </div>
+            <div class="char1-data">
+              <p id="mana-regen-stat" class="stat"> -- </p>
+            </div>
+          </div>
+        </div>
+        <div id="div-stats-col-right">
+          <h2 class="category"> Defense </h2>
+          <div id="div-defense" class="flex-row">
+            <div>
+              <p>Armor</p>
+              <p>Dodge</p>
+              <p>Parry</p>
+              <p>Block</p>
+            </div>
+            <div class="hidden char2-data">
+              <p id="armor-comp-stat" class="stat"> -- </p>
+              <p id="dodge-comp-stat" class="stat"> -- </p>
+              <p id="parry-comp-stat" class="stat"> -- </p>
+              <p id="block-comp-stat" class="stat"> -- </p>
+            </div>
+            <div class="char1-data">
+              <p id="armor-stat" class="stat"> -- </p>
+              <p id="dodge-stat" class="stat"> -- </p>
+              <p id="parry-stat" class="stat"> -- </p>
+              <p id="block-stat" class="stat"> -- </p>
+            </div>
+          </div>
+          <h2 class="category"> Enhancements </h2>
+          <div id="div-enhance" class="flex-row">
+            <div>
+              <p>Crit</p>
+              <p>Haste</p>
+              <p>Versatility</p>
+              <p>Mastery</p>
+              <p>Leech</p>
+              <p>Avoidance</p>
+            </div>
+            <div class="hidden char2-data">
+              <p id="crit-comp-stat" class="stat"> 0.00% </p>
+              <p id="haste-comp-stat" class="stat"> 0.00% </p>
+              <p id="versatility-comp-stat" class="stat"> 0.00% </p>
+              <p id="mastery-comp-stat" class="stat-special"> 0.00% </p>
+              <p id="leech-comp-stat" class="stat"> 0.00% </p>
+              <p id="avoidance-comp-stat" class="stat"> 0.00% </p>
+            </div>
+            <div class="char1-data">
+              <p id="crit-stat" class="stat"> 0.00% </p>
+              <p id="haste-stat" class="stat"> 0.00% </p>
+              <p id="versatility-stat" class="stat"> 0.00% </p>
+              <p id="mastery-stat" class="stat-special"> 0.00% </p>
+              <p id="leech-stat" class="stat"> 0.00% </p>
+              <p id="avoidance-stat" class="stat"> 0.00% </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="stat-compare">
+        <h2 class="heading-gold"> Compare Stats </h2>
+        <div id="div-compare-pics" class="flow-row">
+          <img src="media/separator.png" id="separator" class="float-left" alt="Separating element" />
+          <img src="media/comparePic1.png" id="compPic1" class="img-compare" alt="Comparison Character 1" />
+          <img src="media/comparePic2.png" class="img-compare" alt="Comparison Character 2" />
+          <img src="media/comparePic3.png" class="img-compare" alt="Comparison Character 3" />
+          <img src="media/comparePic4.png" class="img-compare" alt="Comparison Character 4" />
+          <img src="media/comparePic5.png" class="img-compare" alt="Comparison Character 5" />
+          <img src="media/comparePic6.png" class="img-compare" alt="Comparison Character 6" />
+        </div>
+      </div>
+    </div>
+    <div id="div-results-right">
+      <h2 class="heading-gold">My Item Set</h2>
+      <!-- <img src="media/pvp.png" alt="Pvp selection icon" />
+      <img src="media/pve.png" alt="Pve selection icon" /> -->
+      <div id="div-pve-items" class="flex-row">
+        <div id="div-pve-item-col-left">
+          <!-- <p>Helm</p>
+          <p>Chest</p>
+          <p>Shoulders</p>
+          <p>Legs</p>
+          <p>Feet</p>
+          <p>Trinket</p>
+          <p>Back</p> -->
+        </div>
+        <div id="div-pve-item-col-middle">
+          <!-- <p id="helm-desc-pve">???</p>
+          <p id="chest-desc-pve">???</p>
+          <p id="shoulders-desc-pve">???</p>
+          <p id="legs-desc-pve">???</p>
+          <p id="feet-desc-pve">???</p>
+          <p id="trinket-desc-pve">???</p>
+          <p id="back-desc-pve">???</p> -->
+        </div>
+        <div id="div-pve-item-col-right">
+          <!-- <p id="helm-sell-pve" class="stat"> -- </p>
+          <p id="chest-sell-pve" class="stat"> -- </p>
+          <p id="shoulders-sell-pve" class="stat"> -- </p>
+          <p id="legs-sell-pve" class="stat"> -- </p>
+          <p id="feet-sell-pve" class="stat"> -- </p>
+          <p id="trinket-sell-pve" class="stat"> -- </p>
+          <p id="back-sell-pve" class="stat"> -- </p> -->
+        </div>
+        <div id="div-coin-imgs">
+          <!--
+          <img src="media/gold.png" class="coin" alt="Gold coin" /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="div-information">
+  <p> I am words so you can see </p>
+</div>
+
+</body>
+
+</html> 

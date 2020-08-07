@@ -19,20 +19,17 @@ var slideShowPosition;
 // ST = Sticker Trader
 // FT = Funtime Fuel
 // DZ = Day Zero
-var projectAcronyms = ["DOR","ST","FT","DZ"];
-// var slideAmount =     [ 4,    3,    3,  7  ];
+// WOW = World of Warcraft Client
+var projectAcronyms = ["DOR","ST","FT","DZ", "WOW"];
+// var slideAmount =  [ 4,    3,    3,  7,    5 ];
 
 var projectSlideAmountLookup = {
   "DOR": 4,
   "ST": 3,
   "FT": 3,
-  "DZ": 7
+  "DZ": 7,
+  "WOW": 5
 };
-/*var projectSlideAmountLookup = [
-  { fullName: "Dangers of the Road", shortName: "DOR", slideAmount: 4},
-  { fullName: "Sticker Trader", shortName: "ST", slideAmount: 3},
-  { fullName: "Fun Time Fuel", shortName: "FT", slideAmount: 3},
-  { fullName: "Day Zero", shortName: "DZ", slideAmount: 7} ]; */
 
 
 // windowWidth & windowHeight are automatically updated when the browser size is modified
@@ -176,7 +173,6 @@ function setupProjectEvents(projects) {
   } 
   
   // Set up hover events for project links
-  // currently only set up for DZ and DOR
   for(let i = 0; i < projects.length; ++i) {
     if(projects[i] == "ST") 
       continue;
@@ -408,9 +404,9 @@ function changeProjectText(project) {
     case "DOR":
     case "FT":
     case "ST":
+    default:
       textFadeOutFadeInEffect(project + "projBody", document.getElementById(project + "message" + slideNum).innerHTML);
       break;
-    default:
   }
 
 }
