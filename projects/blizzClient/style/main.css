@@ -1,0 +1,199 @@
+body {
+  background-image: url("../media/mainBackground.png") ;
+  margin: 0px;
+}
+p {
+  margin: 8px;
+  margin-left:0px;
+  margin-right: 0px;
+}
+h2 {
+  margin-top: 30px;
+  margin-bottom: 2px;
+  color: #F9F0E9;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex-column{
+  display: flex;
+  flex-flow: column;
+}
+.flex-row{
+  display: flex;
+  flex-flow: row;
+}
+.hidden {
+  display: none;
+}
+#content{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#div-search{
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#search-form {
+  margin-bottom: 50px;
+}  
+input {
+  margin: 8px;
+  padding: 6px;
+  background-color: #0B122F;
+  font-family: "Roboto Condensed script=latin";
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.3em;
+}
+#eagleLogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+#charName {
+  color: white;
+  border-color: #ECBB6E;
+  border-width: 1px;
+  padding-left: 18px;
+}
+#realmName {
+  color: grey;
+  border-color: #A59571;
+  border-width: 1px;
+  padding-left: 18px;
+}
+#charSearch {
+  color: white;
+  background-image: linear-gradient(#148981, #407B8B);
+  border: none;
+}
+
+#div-results {
+  height: 50%;
+  width: 100%;
+  color: #E8AE31;
+  background-color: RGBA(11, 18, 47, 0.6);
+}
+#div-results-left {
+  border-radius: 15px;
+  border: 1px solid grey;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-right: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  max-height: 450px;
+  background-color: RGBA(11, 18, 47, 0.6);
+}
+#div-results-right{
+  border-radius: 15px;
+  border: 1px solid grey;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: RGBA(11, 18, 47, 0.6);
+}
+
+#div-stats-col-left {
+  padding-right:40px;
+  min-width: 300px;
+}
+#div-stats-col-right{
+  padding-right:40px; 
+  min-width: 300px;
+}
+#div-attributes{
+  justify-content: space-between;
+}
+#div-attack{
+  justify-content: space-between;
+}
+#div-spell{
+  justify-content: space-between;
+}
+#div-defense{
+  justify-content: space-between;
+}
+#div-enhance{
+  justify-content: space-between;
+}
+
+#div-compare-pics{
+  max-width: 220px;
+}
+#separator{
+  height: 320px;
+}
+
+#div-pve-item-col-left{
+  width: 80px;
+}
+#div-pve-item-col-middle{
+  width: 200px;
+}
+#div-pve-item-col-right{
+  width: 60px;
+  text-align: justify; /* For Edge */
+  text-align-last: right;
+}
+#div-coin-imgs{
+  max-width: 15px;
+}
+.coin {
+  margin-top: 9px; /* sometimes needs to be 11px, no clue yet why */
+}
+.gold {
+  color: #E8AE31;
+}
+.silver {
+  color: grey;
+}
+.copper {
+  color: #594805;
+}
+.category {
+  font-style: bold;
+}
+.stat{
+  text-align: justify; /* For Edge */
+  text-align-last: right;
+  color: #FCEFE7;
+}
+.stat-special{
+  text-align: justify; /* For Edge */
+  text-align-last: right;
+  color: #1EB0A6;
+}
+.heading-gold{
+  color: #E6AF30;
+}
+.img-compare{
+  padding: 10px;
+}
+
+#compPic1 {
+  cursor:pointer;
+}
+
+#div-information{
+  position: absolute;
+  top: -1000px;
+  left: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #FCEFE7;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-color: RGBA(11, 18, 47, 0.8);
+}

@@ -49,6 +49,16 @@ svg {
   border: 1px solid;
 }
 
+#title {
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+#info {
+  margin-top: 0px;
+  padding: 0px;
+}
+
 .step0 {
   opacity: 1;
 }

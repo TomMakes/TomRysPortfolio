@@ -145,6 +145,7 @@ function rollStory3() {
   let step3Arr = document.getElementsByClassName('step3');
   for(let i = 0; i < step3Arr.length; i++){
     step3Arr[i].style.opacity = "1.0";
+    step3Arr[i].style.display = "block";
   }
 }
 
@@ -165,7 +166,7 @@ function showMapData(name, mouseLoc) {
   //Get the value that we will be displaying
   value = stateValues.get(name);
   
-  let y = mouseLoc[1] + 120; 
+  let y = mouseLoc[1] + 30; 
   let x = mouseLoc[0] + 230; 
 
   d3.select('#title').text(name); 
@@ -416,7 +417,6 @@ var legendOrdinal = d3.legendColor()
 svg.select(".legendOrdinal")
   .call(legendOrdinal);
           
-        
 }
 
 
@@ -499,15 +499,7 @@ function createStackedBarChart(state, variableToCompare) {
        PercentNewAccidents: (upperState.PercentNewAccidents*0.01*upperState.FatalCollisionBillion),
        PercentNotDistracted: (upperState.PercentNotDistracted*0.01*upperState.FatalCollisionBillion),
        PercentSpeeding: (upperState.PercentSpeeding*0.01*upperState.FatalCollisionBillion)}];
-  /*let dataset = [
-      {date: new Date(2018, 6), monday: 413.00, tuesday: 40, wednesday: 324.00, thursday: 42.00, friday: 400 }, 
-      {date: new Date(2018, 7), monday: 210.00, tuesday: 50, wednesday: 244.00, thursday: 70.00, friday: 1230  }, 
-      {date: new Date(2018, 8), monday: 130.00, tuesday: 90, wednesday: 453.00, thursday: 23.00, friday: 940  }, 
-      {date: new Date(2018, 9), monday: 213.00, tuesday: 20, wednesday: 220.00, thursday: 40.00, friday: 1380  } ]; */
 
-  // create d3 layout function to convert dataset into stacked values
-  //let stack = d3.stack()
-  //                    .keys(['monday', 'tuesday', 'wednesday', 'thursday', 'friday']); 
   let stack = d3.stack()
                       .keys([variableCompared, 'FatalCollisionBillion']); 
   let stackedData = stack(dataset);
@@ -551,10 +543,6 @@ function createStackedBarChart(state, variableToCompare) {
 	           .range(['#980043', '#b78d9f']);
             //.range(["#f7f4f9","#e7e1ef","#d4b9da","#c994c7","#df65b0","#e7298a","#ce1256","#980043","#67001f"]);
   
-  /*cScale.domain([
-    d3.min(0),
-    d3.max(dataset, d => d.FatalCollisionBillion + d[variableCompared] )
-  ]);*/
   
   let groups = 
     svg.selectAll('g')
@@ -573,8 +561,11 @@ function createStackedBarChart(state, variableToCompare) {
       .attr('y', d => yScale(d[1]))
       .attr('width', barlen)
       .attr('height', d => yScale(d[0]) - yScale(d[1]))
+      .attr("class", function(d){   
+                return d.data.State;
+            })
       .on('mouseover', function(d) {
-        d3.select(this)
+        d3.selectAll(document.getElementsByClassName(d.data.State))
           .transition('hovered')
           .style('fill-opacity', '0.8');
         console.dir(d3.select(this)._groups[0][0].__data__.data.State);
@@ -582,7 +573,7 @@ function createStackedBarChart(state, variableToCompare) {
         //showBarData(d, d3.select(this));
       }) 
       .on('mouseout', function(d) {
-        d3.select(this)
+        d3.selectAll(document.getElementsByClassName(d.data.State))
           .transition('hovered')
           .style('fill-opacity', '1.0');
         d3.select('#Info')

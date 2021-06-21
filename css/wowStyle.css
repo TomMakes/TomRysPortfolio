@@ -1,23 +1,32 @@
-#wowDangersOfPageBreak {
+#StickerPageWowPageBreak {
   overflow: hidden;
   height: 90px;
-  background-image: url("../media/websiteMedia/wowDangersBreak.png");
+  background-image: url("../media/websiteMedia/stickerWoWBreak.png");
   background-repeat: repeat-x;
 }
 
-#projectDangersOfRoad {
+#projectWoWCharSearch {
   padding-top:  10px;
   padding-bottom:  10px;
+  margin-top: -10px;
   height: 100%;
-  background-color: white;
+  background-color: #000000;
 }
 
-#DangersTitle {
+#projectWoWCharSearch a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.25em;
+}
+
+#WOWTitle {
+  color: #b9b9b9;
   margin-top: 20px;
+  margin-bottom: 10px;
   font-size: 54px;
 }
 
-#DangersSlideShow {
+#WOWSlideShow {
   display: flex;  
   justify-content: center;
   flex-direction: row;
@@ -25,63 +34,76 @@
   position: relative;
 }
 
-#DORA1 {
+#WOWA1 {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background: #FFFFFF;
+  background: #000000;
   transition: background 1s;
-  height: 800px;
+  height: 805px;
   z-index: 1;
 }
 
-#DORA1:hover {
+#WOWA1:hover {
   background: grey;
 }
 
-#DORA2 {
+#WOWA2 {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: #FFFFFF;
+  background: #000000;
   transition: background 1s;
-  height: 800px;
+  height: 805px;
   z-index: 1;
 }
 
-#DORA2:hover {
+#WOWA2:hover {
   background: grey;
 }
 
-#DORprojBodyDiv {
+.WOWAB {
+  width: 50px;
+  background: #000000;
+  transition: background 0.5s;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  height: 805px; 
+  z-index: 1;
 }
 
-#DORprojBody {
-  line-height: 1.5em;
+#WOWprojBodyDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#DORprojLink {
+#WOWprojLink {
   display: flex;
   justify-content: center;
   margin-bottom: 90px;
 }
 
-#DORprojLink a {
-  text-decoration: none;
-  font-size: 1.25em;
-  color: black;
+#WOWprojBody {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  height: 2em;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: #E3E3E3;
 }
 
-#DORslidesDiv {
+#WOWprojBody a {
+  color: white;
+}
+
+#WOWslidesDiv {
   height: 750px;
   width: 1100px;
   position: relative;
   overflow: hidden;
 }
 
-#DOR-slides {
+#WOW-slides {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -92,41 +114,48 @@
   z-index: 0;
 }
 
-#DORmobileArrows {
-  position: absolute;
+#WOWmobileArrows {
   display: none;
 }
 
-.DORspace {
-  background: #FFFFFF;
+
+.WOWspace {
+  background: #000000;
   flex-grow: 1;
   z-index: 4;
 }
 
-#DORthumbnails {
+#WOWthumbnails {
   position: absolute;
   bottom: 0px;
   display: flex;
   flex-direction: row;
-  z-index: 1;
+  z-index: 5;
 }
 
-.DORthumbnail {
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 2px solid white;
+.WOWthumbnail {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid #000000;
 }
 
-.DORthumbnailSelected {
-  border: 2px solid black;
+.WOWthumbnailSelected {
+  border: 2px solid grey;
 }
 
 @media only screen and (max-width: 1100px) {
-  #DORprojLinkA {
+  #WOWprojLinkA {
+    display: none;
+  }
+
+  .WOWAB {
+    width: 25px;
+    height: 305px; 
+    z-index: 1;
     display: none;
   }
   
-  #DORmobileArrows {
+  #WOWmobileArrows {
     width: 90%;
     position: absolute;
     bottom: 50px;
@@ -134,145 +163,117 @@
     justify-content: center;
   }
   
-  #DORmobileArrowLeft {
+  #WOWmobileArrowLeft {
     width: 40%;
   }
   
-  #DORmobileArrowRight {
-    width: 40%;
-  }
-}
-
-@media only screen and (max-width: 1100px) {
-  #DORprojLinkA {
-    display: none;
-  }
-  
-  #DORA1 {
-    display: none;
-  }
-  
-  #DORA2 {
-    display: none;
-  }
-  
-  #DORmobileArrows {
-    width: 90%;
-    position: absolute;
-    bottom: 50px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  #DORmobileArrowLeft {
+  #WOWmobileArrowRight {
     width: 40%;
   }
   
-  #DORmobileArrowRight {
-    width: 40%;
-  }
-  
-  #DORprojBodyDiv {
+  #WOWprojBodyDiv {
     height: 80px;
   }
 }
 
 @media only screen and (max-width: 380px) {
-  #DangersTitle {
-    font-size: 40px;
+  #WOWTitle {
+    font-size: 45px;
   }
   
-  #DangersSlideShow {
+  #WOWSlideShow {
     height: 320px;
   }
   
-  #DORA1 {
+  #WOWA1 {
     height: 305px;
     display: none;
   }
   
-  #DORslidesDiv {
-    height: 300px;
+  #WOWslidesDiv {
+    height: 218px;
     width: 320px;
     position: relative;
   }
   
-  #DOR-slides {
+  #WOW-slides {
     height: 218px;
   }
   
-  #DORA2 {
+  #WOWA2 {
     height: 305px;
     display: none;
   }
   
-  .DORthumbnail {   
-    height: 30px;
+  .WOWthumbnail {
+    height: 25px;
     margin-left: 0px;
     margin-right: 10px;
     z-index: 5;
   }
- 
+  
 }
 
 @media only screen and (min-width: 381px) and (max-width: 440px) {
-  #DangersTitle {
-    font-size: 40px;
+  #WOWTitle {
+    font-size: 45px;
   }
   
-  #DangersSlideShow {
+  #WOWSlideShow {
     height: 390px;
   }
   
-  #DORA1 {
-    height: 305px;
+  #WOWA1 {
+    height: 365px;
     display: none;
   }
   
-  #DORslidesDiv {
-    height: 300px;
+  
+  #WOWslidesDiv {
+    height: 283px;
     width: 400px;
     position: relative;
   }
   
-  #DOR-slides {
+  #WOW-slides {
     height: 283px;
   }
   
-  #DORA2 {
+  #WOWA2 {
     height: 305px;
     display: none;
   }
   
-  .DORthumbnail {   
-    height: 30px;
+  .WOWthumbnail {
+    height: 25px;
     margin-left: 0px;
     margin-right: 10px;
     z-index: 5;
   }
+
 }
 
 @media only screen and (min-width: 441px) and (max-width: 1100px) {
   
-  #DangersSlideShow {
+  #WOWSlideShow {
     height: 610px;
   }
   
-  #DORA1 {
-    height: 560px;
+  #WOWA1 {
+    height: 570px;
   }
   
-  #DORslidesDiv {
+  #WOWslidesDiv {
     height: 511px;
     width: 750px;
     position: relative;
   }
   
-  #DOR-slides {
+  #WOW-slides {
     height: 511px;
   }
   
-  #DORA2 {
+  #WOWA2 {
     height: 511px;
   }
 }
