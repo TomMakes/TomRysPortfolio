@@ -1,0 +1,18 @@
+#funPageContactPageBreak {
+    overflow: hidden;
+    height: 90px;
+    background-image: url("../media/websiteMedia/funPageContactPageBreak.png");
+    background-repeat: repeat-x;
+}
+
+#contactMeDiv {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+
+#contactTitle {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    font-size: 54px;
+}

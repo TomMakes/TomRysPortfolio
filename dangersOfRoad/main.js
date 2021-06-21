@@ -5,8 +5,6 @@ function rand(min, max) {
 }
 
 function rowConverter(row) {
-  //console.log("Rows");
-  //console.dir(row.FatalCollisionBillion);
   return {
     State: row.State,
     FatalCollisionBillion: row.FatalCollisionBillion,

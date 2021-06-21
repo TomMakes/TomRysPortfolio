@@ -41,6 +41,7 @@ $(window).resize(function(){
   windowHeight = $(window).height();
   
   $("#mainPage").css( "height", windowHeight );
+  $("#contactMeDiv").css( "height", windowHeight - 100 );
   
   // Set the spacing on the main page, 
   // depends on if my full name can fit on one line or not
@@ -90,6 +91,7 @@ function setupMainPageAndNav() {
 						getElementsByClassName("link");
 						
   $("#mainPage").css( "height", windowHeight );
+  $("#contactMeDiv").css( "height", windowHeight - 100);
   
   // Set the spacing on the main page, 
   // depends on if my full name can fit on one line or not
